@@ -1,0 +1,7 @@
+{
+  "filePath": "TestFiles",
+  "CosmosDB:AccountName": "familytree-graph",
+  "CosmosDB:Key": "CAwxRerQJUGctH6gKZmtIdxPNRGUfrKPFZos8XjrwQCsQEoYNKlwkCrFGy8mb82wynwnwmZiSgUql2ia4qkK3g==",
+  "CosmosDB:Database": "test-database",
+  "CosmosDB:Container": "test-import"
+}
