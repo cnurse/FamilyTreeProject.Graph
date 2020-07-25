@@ -1,6 +1,6 @@
-using FamilyTreeProject.Graph.Common;
+using FamilyTreeProject.Graph.Contracts;
 using FamilyTreeProject.Graph.Data;
-using FamilyTreeProject.Graph.Edges;
+using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
 
 namespace FamilyTreeProject.Graph.Services
@@ -8,30 +8,33 @@ namespace FamilyTreeProject.Graph.Services
     /// <summary>
     /// The RepositoryService contains methods to manage repository objects
     /// </summary>
-    public class RepositoryService : FamilyTreeVertexService<Repository>, IRepositoryService
+    public class RepositoryService : FamilyTreeVertexServiceBase<Repository>, IRepositoryService
     {
-        private readonly IEdgeRepository<FamilyTreeVertexBase, Tree> _belongsToTreeRepository;
-        private readonly IEdgeRepository<Tree, Repository> _treeContainsRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
         /// <summary>
         /// Constructs a RepositoryService
         /// </summary>
         /// <param name="unitOfWork">The Unit of Work to use to interact with the repositories</param>
-        public RepositoryService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        /// <param name="serviceFactory">The service factory to use to create services</param>
+        /// <param name="tree">The tree we are working with</param>
+        public RepositoryService(IUnitOfWork unitOfWork, IFamilyTreeServiceFactory serviceFactory, Tree tree) : base(unitOfWork, serviceFactory, tree)
         {
-            _belongsToTreeRepository = unitOfWork.GetEdgeRepository<FamilyTreeVertexBase, Tree>();
-            _treeContainsRepository = unitOfWork.GetEdgeRepository<Tree, Repository>();
+            Requires.NotNull(unitOfWork);
+
+            _unitOfWork = unitOfWork;
         }
-        
+
         /// <summary>
-        /// AddEdges is used to add the edges when the base classes Add method is called with addEdges = true
+        /// Adds a Repository to the data store
         /// </summary>
-        /// <param name="repository">The repository being added</param>
-        /// <param name="tree">The tree that the repository belongs to</param>
-        protected override void AddEdges(Repository repository, Tree tree)
+        /// <param name="repository">The Repository to add</param>
+        /// <param name="addEdges">A flag that determines whether the edges are added</param>
+        public void Add(Repository repository, bool addEdges)
         {
-            _belongsToTreeRepository.Add(new BelongsToTree(repository, tree));
-            _treeContainsRepository.Add(new TreeContains<Repository>(tree, repository));
+            AddInternal(repository, addEdges);
+
+            _unitOfWork.Commit();
         }
     }
 }

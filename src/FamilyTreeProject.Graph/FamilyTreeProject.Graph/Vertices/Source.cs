@@ -15,6 +15,15 @@ namespace FamilyTreeProject.Graph.Vertices
         public Source() : this(String.Empty, String.Empty)
         {
         }
+
+        /// <summary>
+        /// Constructs a source
+        /// </summary>
+        /// <param name="repository">The Repository where the source is found</param>
+        public Source(Repository repository) : this(String.Empty, String.Empty)
+        {
+            Repository = new FoundIn(this, repository);
+        }
         
         /// <summary>
         /// Construct a Source
@@ -27,29 +36,47 @@ namespace FamilyTreeProject.Graph.Vertices
             Publisher = String.Empty;
             Title = String.Empty;
             Repository = null;
+            // Citations = new List<Has<Citation>>();
         }
         
         /// <summary>
         /// Gets and sets the Author of the Source
         /// </summary>
-        public string Author { get; set; }
+        public string Author  
+        {
+            get => Properties["author"];
+            set => Properties["author"] = value;
+        }
         
         /// <summary>
         /// Gets and sets the Publisher of the Source
         /// </summary>
-        public string Publisher { get; set; }
+        public string Publisher  
+        {
+            get => Properties["publisher"];
+            set => Properties["publisher"] = value;
+        }
 
        /// <summary>
         /// Gets and sets the Title of the Source
         /// </summary>
-        public string Title { get; set; }
+        public string Title  
+       {
+           get => Properties["title"];
+           set => Properties["title"] = value;
+       }
        
        //Edge properties
+       
+       /*/// <summary>
+       /// Gets and sets the citations for this source
+       /// </summary>
+       public IList<Has<Citation>> Citations { get; set; }*/
        
        /// <summary>
        /// Gets and sets the Repository the Source is Found_In
        /// </summary>
-       public Found_In Repository { get; set; }
+       public FoundIn Repository { get; set; }
 
        /// <summary>
        /// Gets or sets the Tree this Repository belongs to

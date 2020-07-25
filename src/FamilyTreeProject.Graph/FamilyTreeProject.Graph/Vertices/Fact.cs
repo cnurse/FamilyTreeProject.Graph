@@ -1,14 +1,12 @@
 using System;
-using System.Collections.Generic;
 using FamilyTreeProject.Graph.Common;
-using FamilyTreeProject.Graph.Edges;
 
 namespace FamilyTreeProject.Graph.Vertices
 {
     /// <summary>
     /// Represents a Fact
     /// </summary>
-    public class Fact : FamilyTreeVertexBase
+    public class Fact : CitationsVertexBase
     {
         /// <summary>
         /// Constructs a Fact
@@ -28,13 +26,7 @@ namespace FamilyTreeProject.Graph.Vertices
             Description = String.Empty;
             FactType = FactType.Unknown;
             Place = String.Empty;
-            Citations = new List<Citation>();
         }
-        
-        /// <summary>
-        ///   Gets the Citations for the Fact
-        /// </summary>
-        public IList<Citation> Citations { get; }
         
         /// <summary>
         /// The date of the fact (if the fact is an event)

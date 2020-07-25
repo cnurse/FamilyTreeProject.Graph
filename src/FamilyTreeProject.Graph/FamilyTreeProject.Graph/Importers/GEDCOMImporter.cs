@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using FamilyTreeProject.GEDCOM;
 using FamilyTreeProject.GEDCOM.Records;
@@ -8,8 +7,9 @@ using FamilyTreeProject.GEDCOM.Structures;
 using FamilyTreeProject.Graph.Common;
 using FamilyTreeProject.Graph.Contracts;
 using FamilyTreeProject.Graph.Edges;
-using FamilyTreeProject.Graph.Services;
+using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
+using EventClass = FamilyTreeProject.GEDCOM.Common.EventClass;
 
 namespace FamilyTreeProject.Graph.Importers
 {
@@ -59,6 +59,9 @@ namespace FamilyTreeProject.Graph.Importers
             
             //Add Individuals
             ProcessIndividuals(_individuals, tree);
+            
+            //Add Individual Links
+            ProcessFamilies(_individuals);
         }
 
         private void Initialize()
@@ -82,7 +85,35 @@ namespace FamilyTreeProject.Graph.Importers
 
         private void LoadFamilies()
         {
-            
+            foreach (var gedcomRecord in _gedComDocument.FamilyRecords)
+            {                
+                var familyRecord = (GEDCOMFamilyRecord) gedcomRecord;
+                Individual husband = null;
+                Individual wife = null;
+                if (!String.IsNullOrEmpty(familyRecord.Husband))
+                {
+                    husband = _individuals[familyRecord.Husband];
+                }
+                if (!String.IsNullOrEmpty(familyRecord.Wife))
+                {
+                    wife = _individuals[familyRecord.Wife];
+                }
+
+                if (husband != null && wife != null)
+                {
+                    husband.AddSpouse(wife);
+                }
+                
+                foreach (string child in familyRecord.Children)
+                {
+                    var individual = _individuals[child];
+                    if (individual != null)
+                    {
+                        husband?.AddChild(individual);
+                        wife?.AddChild(individual);
+                    }
+                }
+            }
         }
         
         private  void LoadIndividuals()
@@ -100,44 +131,93 @@ namespace FamilyTreeProject.Graph.Importers
                     Sex = (Sex) Enum.Parse(typeof(Sex), individualRecord.Sex.ToString()),
                 };
 
-                //ProcessFacts(individual, individualRecord.Events);
+                LoadCitations(individual, individualRecord.SourceCitations);
 
-                //ProcessMultimedia(individual, individualRecord.Multimedia);
+                LoadFacts(individual, individualRecord.Events);
 
+                LoadMultimedia(individual, individualRecord.Multimedia);
                 LoadNotes(individual, individualRecord.Notes);
-
-                //ProcessCitations(individual, individualRecord.SourceCitations);
 
                 _individuals.Add(GEDCOMId,individual);
             }
         }
         
-        private void LoadNote(FamilyTreeVertexBase vertex, string noteText)
+        private void LoadCitations(CitationsVertexBase vertex, List<GEDCOMSourceCitationStructure> citations)
         {
-            if (!String.IsNullOrEmpty(noteText))
+            foreach (var citationStructure in citations)
             {
-                var newNote = new Note
+                if (citationStructure == null) continue;
+
+                var source = _sources[citationStructure.XRefId];
+
+                var newCitation = new Citation(source)
                 {
-                    Text = noteText,
+                    Date = citationStructure.Date,
+                    Page = citationStructure.Page,
+                    Text = citationStructure.Text,
                 };
-                vertex.Notes.Add(new Has<Note>(vertex, newNote));
+                
+                LoadMultimedia(newCitation, citationStructure.Multimedia);
+                LoadNotes(newCitation, citationStructure.Notes);
+
+                vertex.AddCitation(newCitation);
             }
         }
 
-        private void LoadNotes(FamilyTreeVertexBase vertex, List<GEDCOMNoteStructure> notes)
+        private void LoadFacts(Individual individual, List<GEDCOMEventStructure> events)
+        {
+            foreach (var eventStructure in events)
+            {
+                var newFact = new Fact()
+                {
+                    Date = eventStructure.Date,
+                    Place = (eventStructure.Place != null) ? eventStructure.Place.Data : string.Empty
+                };
+
+                switch (eventStructure.EventClass)
+                {
+                    case EventClass.Individual:
+                        newFact.FactType = (Common.FactType) Enum.Parse(typeof(Common.FactType), eventStructure.IndividualEventType.ToString());
+                        break;
+                    case EventClass.Family:
+                        newFact.FactType = (Common.FactType) Enum.Parse(typeof(Common.FactType), eventStructure.FamilyEventType.ToString());
+                        break;
+                    case EventClass.Attribute:
+                        newFact.FactType = (Common.FactType) Enum.Parse(typeof(Common.FactType), eventStructure.IndividualAttributeType.ToString());
+                        break;
+                    default:
+                        newFact.FactType = Common.FactType.Unknown;
+                        break;
+                }
+
+                individual.AddFact(newFact);
+
+                LoadCitations(newFact, eventStructure.SourceCitations);
+
+                LoadMultimedia(newFact, eventStructure.Multimedia);
+                LoadNotes(newFact, eventStructure.Notes);
+            }
+        }
+
+        private void LoadMultimedia(FamilyTreeVertexBase vertex, List<GEDCOMMultimediaStructure> multimedia)
+        {
+            
+        }
+        
+       private void LoadNotes(FamilyTreeVertexBase vertex, List<GEDCOMNoteStructure> notes)
         {
             foreach (var noteStructure in notes)
             {
                 if (String.IsNullOrEmpty(noteStructure.XRefId))
                 {
-                    LoadNote(vertex, noteStructure.Text);
+                    vertex.AddNote(noteStructure.Text);
                 }
                 else
                 {
                     if (_gedComDocument.NoteRecords[noteStructure.XRefId] is GEDCOMNoteRecord noteRecord && !String.IsNullOrEmpty(noteRecord.Data))
                     {
 
-                        LoadNote(vertex, noteRecord.Data);
+                        vertex.AddNote(noteRecord.Data);
                     }
                 }
             }
@@ -157,6 +237,7 @@ namespace FamilyTreeProject.Graph.Importers
                     Name = repositoryRecord.Name,
                 };
 
+                LoadMultimedia(repository, repositoryRecord.Multimedia);
                 LoadNotes(repository, repositoryRecord.Notes);
 
                 _repositories.Add(GEDCOMId, repository);
@@ -169,6 +250,7 @@ namespace FamilyTreeProject.Graph.Importers
             {
                 var sourceRecord = (GEDCOMSourceRecord)gedcomRecord;
                 var GEDCOMId = sourceRecord.Id;
+                
                 var source = new Source
                 {
                     // ReSharper disable once PossibleInvalidOperationException
@@ -181,58 +263,74 @@ namespace FamilyTreeProject.Graph.Importers
                 if (sourceRecord.SourceRepository != null)
                 {
                     var repository = _repositories[sourceRecord.SourceRepository.XRefId];
-                    source.Repository = new Found_In(source, repository);
-                    repository.Sources.Add(new Has<Source>(repository, source));
+                    source.Repository = new FoundIn(source, repository);
                 }
 
+                LoadMultimedia(source, sourceRecord.Multimedia);
                 LoadNotes(source, sourceRecord.Notes);
 
                 _sources.Add(GEDCOMId, source);
             }
         }
 
-        private void ProcessIndividuals(IDictionary<string, Individual> individuals, Tree tree)
+        private void ProcessFamilies(IDictionary<string, Individual> individuals)
         {
+            var childService = _serviceFactory.CreateChildService();
+            var parentService = _serviceFactory.CreateParentService();
+            var spouseService = _serviceFactory.CreateSpouseService();
+            
+            
+            foreach (var individual in individuals.Values)
+            {
+                foreach (var child in individual.Children)
+                {
+                    childService.Add(child);
+                }
+
+                foreach (var parent in individual.Parents)
+                {
+                    parentService.Add(parent);
+                }
+                
+                foreach (var spouse in individual.Spouses)
+                {
+                    spouseService.Add(spouse);
+                }
+            }
             
         }
 
-        private void ProcessNotes(FamilyTreeVertexBase vertex, Tree tree)
+        private void ProcessIndividuals(IDictionary<string, Individual> individuals, Tree tree)
         {
-            //Add TreeId to each note
-            foreach (var note in vertex.Notes)
+            var individualService = _serviceFactory.CreateIndividualService(tree);
+
+            foreach (var individual in individuals.Values)
             {
-                note.TargetVertex.TreeId = tree.TreeId;
+                individual.TreeId = tree.TreeId;
+                individualService.Add(individual, true);
             }
         }
 
         private void ProcessRepositories(IDictionary<string, Repository> repositories, Tree tree)
         {
-            var repositoryService = _serviceFactory.CreateRepositoryService();
+            var repositoryService = _serviceFactory.CreateRepositoryService(tree);
 
             foreach (var repository in repositories.Values)
             {
                 repository.TreeId = tree.TreeId;
-                
-                ProcessNotes(repository, tree);
-
-                repositoryService.Add(repository, tree, true);
+                repositoryService.Add(repository, true);
             }
         }
 
         private void ProcessSources(IDictionary<string, Source> sources, Tree tree)
         {
-            var sourceService = _serviceFactory.CreateSourceService();
+            var sourceService = _serviceFactory.CreateSourceService(tree);
 
             foreach (var source in sources.Values)
             {
                 source.TreeId = tree.TreeId;
-                
-                ProcessNotes(source, tree);
-
-                sourceService.Add(source, tree, true);
+                sourceService.Add(source, true);
             }
-
         }
-
     }
 }

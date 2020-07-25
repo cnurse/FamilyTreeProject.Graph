@@ -10,9 +10,9 @@ namespace FamilyTreeProject.Graph.Common
         Belongs_To_Tree = 2,
         Found_In = 3,
         Has = 4,
+        Referenced_In = 5,
         Parent = 10,
         Child = 11,
-        Spouse = 12,
-        Citation = 13
+        Spouse = 12
     }
 }

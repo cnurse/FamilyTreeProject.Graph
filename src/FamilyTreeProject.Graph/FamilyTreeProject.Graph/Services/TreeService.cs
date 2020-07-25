@@ -1,6 +1,7 @@
 using System;
 using FamilyTreeProject.Graph.Contracts;
 using FamilyTreeProject.Graph.Data;
+using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
 
 namespace FamilyTreeProject.Graph.Services
@@ -22,7 +23,6 @@ namespace FamilyTreeProject.Graph.Services
             Requires.NotNull(unitOfWork);
 
             _unitOfWork = unitOfWork;
-
             _treeRepository = _unitOfWork.GetVertexRepository<Tree>();
         }
         

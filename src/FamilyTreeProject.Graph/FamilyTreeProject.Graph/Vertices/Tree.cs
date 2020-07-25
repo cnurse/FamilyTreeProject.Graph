@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using FamilyTreeProject.Graph.Common;
-using FamilyTreeProject.Graph.Edges;
 
 namespace FamilyTreeProject.Graph.Vertices
 {
@@ -15,7 +13,6 @@ namespace FamilyTreeProject.Graph.Vertices
         /// </summary>
         public Tree() : this(String.Empty)
         {
-            
         }
 
         /// <summary>
@@ -28,9 +25,9 @@ namespace FamilyTreeProject.Graph.Vertices
             Title = String.Empty;
             Description = String.Empty;
             Owner = String.Empty;
-            Individuals = new List<TreeContains<Individual>>();
+            /*Individuals = new List<TreeContains<Individual>>();
             Repositories = new List<TreeContains<Repository>>();
-            Sources = new List<TreeContains<Source>>();
+            Sources = new List<TreeContains<Source>>();*/
         }
         
         /// <summary>
@@ -70,7 +67,7 @@ namespace FamilyTreeProject.Graph.Vertices
             set => Properties["title"] = value;
         }
         
-        //Edge properties
+        /*//Edge properties
 
         /// <summary>
         /// Gets the collection of Individuals that the Tree contains
@@ -85,7 +82,6 @@ namespace FamilyTreeProject.Graph.Vertices
         /// <summary>
         /// Gets the collection of Sources that the Tree contains
         /// </summary>
-        public IList<TreeContains<Source>> Sources { get; }
-
+        public IList<TreeContains<Source>> Sources { get; }*/
     }
 }

@@ -9,10 +9,11 @@ namespace FamilyTreeProject.Graph.Common
         Individual = 1,
         Family = 2,
         Fact = 3,
-        Source = 4,
-        Repository = 5,
-        Note = 6,
-        Multimedia = 7,
-        Tree = 8      
+        Citation = 4,
+        Source = 5,
+        Repository = 6,
+        Note = 7,
+        Multimedia = 8,
+        Tree = 9      
     }
 }

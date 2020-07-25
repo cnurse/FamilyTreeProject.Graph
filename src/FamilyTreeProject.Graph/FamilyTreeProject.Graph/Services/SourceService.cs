@@ -1,6 +1,6 @@
-using FamilyTreeProject.Graph.Common;
+using FamilyTreeProject.Graph.Contracts;
 using FamilyTreeProject.Graph.Data;
-using FamilyTreeProject.Graph.Edges;
+using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
 
 namespace FamilyTreeProject.Graph.Services
@@ -8,44 +8,48 @@ namespace FamilyTreeProject.Graph.Services
     /// <summary>
     /// The SourceService contains methods to manage source objects
     /// </summary>
-    public class SourceService : FamilyTreeVertexService<Source>, ISourceService
+    public class SourceService : FamilyTreeVertexServiceBase<Source>, ISourceService
     {
-        private readonly IEdgeRepository<FamilyTreeVertexBase, Tree> _belongsToTreeRepository;
-        private readonly IEdgeRepository<Source, Repository> _foundInRepository;
-        private readonly IEdgeRepository<FamilyTreeVertexBase, Source> _hasSourceRepository;
-        private readonly IEdgeRepository<Tree, Source> _treeContainsRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IFoundInService _foundInService;
+        // private readonly IHasService<Source> _hasSourceService;
 
         /// <summary>
         /// Constructs a SourceService
         /// </summary>
         /// <param name="unitOfWork">The Unit of Work to use to interact with the repositories</param>
-        public SourceService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        /// <param name="serviceFactory">The service factory to use to create services</param>
+        /// <param name="tree">The tree we are working with</param>
+        public SourceService(IUnitOfWork unitOfWork, IFamilyTreeServiceFactory serviceFactory, Tree tree) : base(unitOfWork, serviceFactory, tree)
         {
-            _belongsToTreeRepository = unitOfWork.GetEdgeRepository<FamilyTreeVertexBase, Tree>();
-            _treeContainsRepository = unitOfWork.GetEdgeRepository<Tree, Source>();
-            _foundInRepository = unitOfWork.GetEdgeRepository<Source, Repository>();
-            _hasSourceRepository = unitOfWork.GetEdgeRepository<FamilyTreeVertexBase, Source>();
+            Requires.NotNull(unitOfWork);
+
+            _unitOfWork = unitOfWork;
+            _foundInService = serviceFactory.CreateFoundInService();
+            // _hasSourceService = serviceFactory.CreateHasSourceService();
         }
 
         /// <summary>
-        /// AddEdges is used to add the edges when the base classes Add method is called with addEdges = true
+        /// Adds a Source the data store
         /// </summary>
-        /// <param name="source">The source being added</param>
-        /// <param name="tree">The tree that the source belongs to</param>
-        protected override void AddEdges(Source source, Tree tree)
+        /// <param name="source">The source to add</param>
+        /// <param name="addEdges">A flag that determines whether the edges are added</param>
+        public void Add(Source source, bool addEdges)
         {
-            if (source.Repository != null)
+            AddInternal(source, addEdges);
+            if (addEdges)
             {
-                var repository = source.Repository.TargetVertex;
-
-                //Add Repository Edges
-                _foundInRepository.Add(new Found_In(source, repository));
-                _hasSourceRepository.Add(new Has<Source>(repository, source));
+                var foundIn = source.Repository;
+                if (foundIn != null)
+                {
+                    var repository = foundIn.TargetVertex;
+                    
+                    //Add Repository Edges
+                    _foundInService.Add(foundIn);
+                    // _hasSourceService.Add(new Has<Source>(repository, source));
+                }
             }
-            
-            //Add Tree edges
-            _belongsToTreeRepository.Add(new BelongsToTree(source, tree));
-            _treeContainsRepository.Add(new TreeContains<Source>(tree, source));
+            _unitOfWork.Commit();
         }
     }
 }

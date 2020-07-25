@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using FamilyTreeProject.Graph.Common;
 using FamilyTreeProject.Graph.Edges;
 
@@ -26,29 +25,46 @@ namespace FamilyTreeProject.Graph.Vertices
         {
             Address = String.Empty;
             Name = String.Empty;
-            Sources = new List<Has<Source>>();
+            //Sources = new List<Has<Source>>();
         }
         
         /// <summary>
         /// The Address of the Repository
         /// </summary>
-        public string Address { get; set; }
+        public string Address  
+        {
+            get => Properties["address"];
+            set => Properties["address"] = value;
+        }
 
         /// <summary>
         /// The Name of the Repository
         /// </summary>
-        public string Name { get; set; }
+        public string Name  
+        {
+            get => Properties["name"];
+            set => Properties["name"] = value;
+        }
         
         //Edge Properties
+        
+        /*/// <summary>
+        /// Gets the Sources in this Repository
+        /// </summary>
+        public IList<Has<Source>> Sources { get; }*/
         
         /// <summary>
         /// Gets or sets the Tree this Repository belongs to
         /// </summary>
         public BelongsToTree Tree { get; set; }
-        
-        /// <summary>
-        /// Gets the Sources in this Repository
+
+        /*/// <summary>
+        /// Adds a source to the repository
         /// </summary>
-        public IList<Has<Source>> Sources { get; }
+        /// <param name="source">The source to add</param>
+        public void AddSource(Source source)
+        {
+            Sources.Add(new Has<Source>(this, source));
+        }*/
     }
 }

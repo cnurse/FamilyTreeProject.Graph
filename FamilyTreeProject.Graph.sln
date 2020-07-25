@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTreeProject.Graph", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTreeProject.Graph.Tests", "tests\FamilyTreeProject.Graph.Tests\FamilyTreeProject.Graph.Tests.csproj", "{19AEC48E-CEFC-40A9-BDB7-27A81697FA21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTreeProject.Graph.CosmosDB", "src\FamilyTreeProject.Graph.CosmosDB\FamilyTreeProject.Graph.CosmosDB.csproj", "{D8425E48-FA01-4CDF-8CE7-D87827EBEA7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTreeProject.Graph.Neo4j", "src\FamilyTreeProject.Graph.Neo4j\FamilyTreeProject.Graph.Neo4j.csproj", "{FBC62E19-61A4-4455-8D1C-33B77F8B8C22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,14 @@ Global
 		{19AEC48E-CEFC-40A9-BDB7-27A81697FA21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19AEC48E-CEFC-40A9-BDB7-27A81697FA21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19AEC48E-CEFC-40A9-BDB7-27A81697FA21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8425E48-FA01-4CDF-8CE7-D87827EBEA7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8425E48-FA01-4CDF-8CE7-D87827EBEA7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8425E48-FA01-4CDF-8CE7-D87827EBEA7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8425E48-FA01-4CDF-8CE7-D87827EBEA7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBC62E19-61A4-4455-8D1C-33B77F8B8C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC62E19-61A4-4455-8D1C-33B77F8B8C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC62E19-61A4-4455-8D1C-33B77F8B8C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC62E19-61A4-4455-8D1C-33B77F8B8C22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

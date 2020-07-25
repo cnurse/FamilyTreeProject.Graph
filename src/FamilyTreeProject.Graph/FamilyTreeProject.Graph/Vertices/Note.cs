@@ -28,6 +28,10 @@ namespace FamilyTreeProject.Graph.Vertices
         /// <summary>
         /// The text of the Note
         /// </summary>
-        public string Text { get; set; }
+        public string Text  
+        {
+            get => Properties["text"];
+            set => Properties["text"] = value;
+        }
     }
 }

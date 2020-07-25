@@ -6,7 +6,7 @@ namespace FamilyTreeProject.Graph.Data
     /// Defines a simple generic repository for managing vertices
     /// </summary>
     /// <typeparam name="V">The vertex type</typeparam>
-    public interface IVertexRepository<V> where V : Vertex
+    public interface IVertexRepository<in V> where V : IVertex
     {
         /// <summary>
         /// Add a vertex into the repository

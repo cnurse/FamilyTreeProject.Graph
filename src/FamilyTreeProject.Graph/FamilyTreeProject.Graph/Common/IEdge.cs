@@ -1,6 +1,6 @@
 namespace FamilyTreeProject.Graph.Common
 {
-    public interface IEdge<TV1, TV2> where TV1 : Vertex where TV2 : Vertex
+    public interface IEdge<TV1, TV2> where TV1 : IVertex where TV2 : IVertex
     {
         /// <summary>
         /// Gets the EdgeType of the Edge

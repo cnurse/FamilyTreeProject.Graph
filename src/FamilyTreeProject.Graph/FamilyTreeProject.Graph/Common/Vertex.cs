@@ -1,7 +1,3 @@
-
-using System.Collections.Generic;
-using CosmosDB.Net.Domain.Attributes;
-
 namespace FamilyTreeProject.Graph.Common
 {
     /// <summary>

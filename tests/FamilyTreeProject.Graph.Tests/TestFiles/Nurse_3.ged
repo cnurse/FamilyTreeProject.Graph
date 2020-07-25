@@ -1,0 +1,395 @@
+﻿0 HEAD
+1 SOUR FTM
+2 VERS 24.0.1.1252
+2 NAME Family Tree Maker for Windows
+2 CORP The Software MacKiev Company
+3 ADDR 30 Union Wharf
+4 CONT Boston, MA 02109
+3 PHON (617) 227-6681
+1 DEST FTM
+1 DATE 17 JUL 2020
+1 CHAR UTF-8
+1 FILE Nurse_3.ged
+1 SUBM @SUBM@
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+0 @SUBM@ SUBM
+1 NAME Not Given
+0 @I211@ INDI
+1 SOUR @S46@
+2 OBJE @M963@
+1 NAME Charles Richmond /Nurse/
+2 SOUR @S46@
+3 OBJE @M963@
+1 SEX M
+1 BIRT
+2 DATE 20 APR 1956
+2 PLAC Mortimer House, Bristol, England
+2 SOUR @S46@
+3 OBJE @M963@
+1 EMIG Canadian Permanent Residency
+2 DATE 19 JUL 1984
+2 PLAC Vancouver, British Columbia, Canada
+3 MAP
+4 LATI N49.25
+4 LONG W123.1333
+2 SOUR @S138@
+1 EMIG Canadian Permanent Residency
+2 DATE 19 JUL 1984
+2 PLAC Vancouver, Canada
+2 SOUR @S138@
+1 FAMS @F59@
+1 FAMC @F32@
+0 @I192@ INDI
+1 NAME Muriel Blanche /Carter/
+2 SOUR @S45@
+3 PAGE England and Wales, Death Index: 1984-2005
+3 DATA
+4 TEXT death date:  13 Nov 1964  death place:  Bristol, Gloucestershire, Engl
+5 CONC and  birth date:  19 Apr 1922
+3 OBJE @M821@
+2 SOUR @S31@
+3 OBJE @M825@
+2 SOUR @S128@
+3 PAGE British Postal Museum and Archive; Series: POST 58; Reference Number: 135
+3 OBJE @M826@
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England
+3 OBJE @M828@
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England
+3 OBJE @M828@
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England
+3 OBJE @M837@
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England
+3 OBJE @M837@
+2 SOUR @S46@
+3 PAGE General Register Office; United Kingdom; Birth Register Indexes; Reference: Volume 5c, Page 865
+3 OBJE @M845@
+2 SOUR @S39@
+3 PAGE The National Archives; Kew, London, England; 1939 Register; Reference: RG 101/5074C
+3 OBJE @M851@
+1 SEX F
+1 BIRT
+2 DATE 19 APR 1922
+2 PLAC Keynsham, Gloucestershire
+2 SOUR @S45@
+3 PAGE England and Wales, Death Index: 1984-2005
+3 DATA
+4 TEXT death date:  13 Nov 1964  death place:  Bristol, Gloucestershire, Engl
+5 CONC and  birth date:  19 Apr 1922
+3 OBJE @M821@
+2 SOUR @S46@
+3 PAGE General Register Office; United Kingdom; Birth Register Indexes; Reference: Volume 5c, Page 865
+3 OBJE @M845@
+2 SOUR @S39@
+3 PAGE The National Archives; Kew, London, England; 1939 Register; Reference: RG 101/5074C
+3 OBJE @M851@
+1 RESI
+2 DATE 1953
+2 PLAC 111 Hill Street, Kingswood, Gloucestershire, England
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England
+3 OBJE @M837@
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England
+3 OBJE @M837@
+1 DEAT
+2 DATE 13 NOV 1964
+2 PLAC Bristol, Gloucestershire, England
+3 MAP
+4 LATI N51.4558
+4 LONG W2.5954
+2 SOUR @S45@
+3 PAGE England and Wales, Death Index: 1984-2005
+3 DATA
+4 TEXT death date:  13 Nov 1964  death place:  Bristol, Gloucestershire, Engl
+5 CONC and  birth date:  19 Apr 1922
+3 OBJE @M821@
+2 SOUR
+2 SOUR @S129@
+2 SOUR @S130@
+1 RESI Marital Status: Single
+2 DATE 1939
+2 PLAC 111 Hill Street, Kingswood, Gloucestershire, England
+2 SOUR @S39@
+3 PAGE The National Archives; Kew, London, England; 1939 Register; Reference: RG 101/5074C
+3 OBJE @M851@
+1 RESI
+2 DATE 1950
+2 PLAC 111 Hill Street, Kingswood, Gloucestershire, England
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England
+3 OBJE @M828@
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England
+3 OBJE @M828@
+1 RESI
+2 DATE 10 JAN 1940
+2 PLAC Bristol, England
+2 SOUR @S128@
+3 PAGE British Postal Museum and Archive; Series: POST 58; Reference Number: 135
+3 OBJE @M826@
+1 FAMS @F32@
+0 @I131@ INDI
+1 NAME Edward Richmond /Nurse/
+2 SOUR @S65@
+3 PAGE England &amp; Wales, Birth Index: 1916-2005
+3 DATA
+4 TEXT birth date:  30 Sep 1924  birth place:  Hanham, Gloucestershire, Engla
+5 CONC nd
+3 OBJE @M669@
+2 SOUR @S98@
+3 OBJE @M674@
+2 SOUR @S58@
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England; Gloucestershire, England, Electoral Registers, 1832-1974
+3 OBJE @M680@
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England; Gloucestershire, England, Electoral Registers, 1832-1974
+3 OBJE @M684@
+2 SOUR @S83@
+1 SEX M
+1 BIRT
+2 DATE 30 SEP 1924
+2 PLAC Hanham, Gloucestershire, England
+3 MAP
+4 LATI N51.4496
+4 LONG W2.5164
+2 SOUR @S65@
+3 PAGE England &amp; Wales, Birth Index: 1916-2005
+3 DATA
+4 TEXT birth date:  30 Sep 1924  birth place:  Hanham, Gloucestershire, Engla
+5 CONC nd
+3 OBJE @M669@
+2 SOUR @S58@
+2 SOUR @S83@
+1 RESI
+2 DATE BET 2003 AND 2006
+2 PLAC 75, Kellaway Avenue, BS6 7XT, England
+2 SOUR @S83@
+1 BURI
+2 DATE 21 OCT 2011
+2 PLAC Canford Crematorium, Bristol, England
+1 DEAT
+2 DATE 4 OCT 2011
+2 PLAC Bristol, Gloucestershire, England
+3 MAP
+4 LATI N51.4558
+4 LONG W2.5954
+2 SOUR @S58@
+1 RESI
+2 DATE 1953
+2 PLAC Fylde Cottage, Hanham Green, Gloucestershire, England
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England; Gloucestershire, England, Electoral Registers, 1832-1974
+3 OBJE @M684@
+1 RESI
+2 DATE 1952
+2 PLAC Fylde Cottage, Hanham Green, Gloucestershire, England
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England; Gloucestershire, England, Electoral Registers, 1832-1974
+3 OBJE @M680@
+1 RESI
+2 DATE BET 2003 AND 2006
+2 PLAC 75, Kellaway Avenue, BS6 7XT, Bristol, Gloucestershire, England
+2 SOUR @S83@
+1 RESI
+2 DATE 1953
+2 PLAC Fylde Cottage, Abbots Road, Hanham Green, Gloucestershire, England
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England; Gloucestershire, England, Electoral Registers, 1832-1974
+3 OBJE @M684@
+1 RESI
+2 DATE 1952
+2 PLAC Fylde Cottage, Abbots Road, Hanham Green, Gloucestershire, England
+2 SOUR @S40@
+3 PAGE Gloucestershire Archives; Gloucester, England; Gloucestershire, England, Electoral Registers, 1832-1974
+3 OBJE @M680@
+1 FAMS @F32@
+0 @F59@ FAM
+1 HUSB @I211@
+1 MARR
+2 DATE 11 JUN 1983
+2 PLAC St. Helen's Point Grey, Vancouver, British Columbia, Canada
+2 SOUR @S129@
+2 SOUR @S54@
+0 @F32@ FAM
+1 HUSB @I131@
+1 WIFE @I192@
+1 CHIL @I211@
+2 _FREL Natural
+2 _MREL Natural
+1 MARR
+2 DATE 5 FEB 1955
+2 PLAC Kingswood, Gloucestershire, England
+2 SOUR @S98@
+3 OBJE @M674@
+2 SOUR @S31@
+3 OBJE @M825@
+0 @S31@ SOUR
+1 AUTH Ancestry.com
+1 TITL England & Wales, Civil Registration Marriage Index, 1916-2005
+1 PUBL Name: Ancestry.com Operations, Inc; Location: Provo, UT, USA; Date: 20
+2 CONC 10;
+1 REPO @R10@
+1 NOTE
+2 CONC General Register Office. <i>England and Wales Civil Registration Index
+2 CONC es</i>. London, England: General Register Office. © Crown copyright. P
+2 CONC ublished by permission of the Controller of HMSO and the Office for Na
+2 CONC tional Statistics. You must not copy on, transfer or reproduce record
+2 CONC s without the prior permission of ONS. Indexes created by the Genera
+2 CONC l Register Office, in London, England.
+0 @S39@ SOUR
+1 AUTH Ancestry.com
+1 TITL 1939 England and Wales Register
+1 PUBL Name: Ancestry.com Operations, Inc.; Location: Lehi, UT, USA; Date: 20
+2 CONC 18;
+1 REPO @R10@
+0 @S40@ SOUR
+1 AUTH Ancestry.com
+1 TITL Gloucestershire, England, Electoral Registers, 1832-1974
+1 PUBL Name: Ancestry.com Operations, Inc.; Location: Provo, UT, USA; Date: 2
+2 CONC 016;
+1 REPO @R10@
+0 @S45@ SOUR
+1 AUTH Ancestry.com
+1 TITL England & Wales, Civil Registration Death Index, 1916-2007
+1 PUBL Name: Ancestry.com Operations Inc; Location: Provo, UT, USA; Date: 200
+2 CONC 7;
+1 REPO @R10@
+1 NOTE
+2 CONC General Register Office. <i>England and Wales Civil Registration Index
+2 CONC es</i>. London, England: General Register Office. © Crown copyright. P
+2 CONC ublished by permission of the Controller of HMSO and the Office for Na
+2 CONC tional Statistics. You must not copy on, transfer or reproduce record
+2 CONC s without the prior permission of ONS. Indexes created by the Genera
+2 CONC l Register Office, in London, England.
+0 @S46@ SOUR
+1 AUTH Ancestry.com
+1 TITL England & Wales, Birth Index, 1916-2005
+1 PUBL Name: Ancestry.com Operations Inc; Location: Provo, UT, USA; Date: 200
+2 CONC 8;
+1 REPO @R10@
+0 @S54@ SOUR
+1 AUTH General Register Office
+1 TITL Original Marriage Certificate
+0 @S58@ SOUR
+1 AUTH Ancestry.com
+1 TITL England and Wales, Death Index, 2007-2013
+1 PUBL Name: Ancestry.com Operations, Inc.; Location: Provo, UT, USA; Date: 2
+2 CONC 014;
+1 REPO @R10@
+0 @S65@ SOUR
+1 AUTH Ancestry.com
+1 TITL England & Wales, Civil Registration Birth Index, 1916-2005
+1 PUBL Name: Ancestry.com Operations Inc; Location: Provo, UT, USA; Date: 200
+2 CONC 8;
+1 REPO @R10@
+1 NOTE
+2 CONC General Register Office. <i>England and Wales Civil Registration Index
+2 CONC es</i>. London, England: General Register Office. <p>© Crown copyright
+2 CONC . Published by permission of the Controller of HMSO and the Office fo
+2 CONC r National Statistics. You must not copy on, transfer, or reproduce re
+2 CONC cords without the prior permission of ONS. Indexes created by the Gene
+2 CONC ral Register Office, in London, England.</p>
+0 @S83@ SOUR
+1 AUTH Ancestry.com
+1 TITL UK, Electoral Registers, 2003-2010
+1 PUBL Name: Ancestry.com Operations Inc; Location: Lehi, UT, USA; Date: 2017
+2 CONC ;
+1 REPO @R10@
+0 @S98@ SOUR
+1 AUTH Ancestry.com
+1 TITL England & Wales, Marriage Index, 1916-2005
+1 PUBL Name: Ancestry.com Operations, Inc; Location: Provo, UT, USA; Date: 20
+2 CONC 10;
+1 REPO @R10@
+0 @S128@ SOUR
+1 AUTH Ancestry.com
+1 TITL British Postal Service Appointment Books, 1737-1969
+1 PUBL Name: Ancestry.com Operations, Inc.; Location: Provo, UT, USA; Date: 2
+2 CONC 010;
+1 REPO @R10@
+0 @S129@ SOUR
+1 AUTH Charles Richmond Nurse
+1 TITL Personal Notes (Charles R Nurse)
+0 @S130@ SOUR
+1 AUTH Charles Richmond Nurse
+1 TITL Personal Notes (Charles R Nurse)
+0 @S138@ SOUR
+1 AUTH Employment and Immigration Canada
+1 TITL Record of Landing
+0 @R10@ REPO
+1 NAME Ancestry.com
+1 ADDR http://www.Ancestry.com
+1 EMAIL
+1 PHON
+1 NOTE
+2 CONC This is a test Note
+0 @M669@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\England & Wales, Civil Registration Birth Index, 1916-2005(5).jpg
+2 FORM jpg
+2 TITL England & Wales, Civil Registration Birth Index, 1916-2005
+2 _TEXT England &amp; Wales, Birth Index: 1916-2005
+0 @M674@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\England & Wales, Marriage Index, 1916-2005(2).jpg
+2 FORM jpg
+2 TITL England & Wales, Marriage Index, 1916-2005
+0 @M680@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\Gloucestershire, England, Electoral Registers, 1832-1974(13).jpg
+2 FORM jpg
+2 TITL Gloucestershire, England, Electoral Registers, 1832-1974
+2 _TEXT Gloucestershire Archives; Gloucester, England; Gloucestershire, Englan
+3 CONC d, Electoral Registers, 1832-1974
+0 @M684@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\Gloucestershire, England, Electoral Registers, 1832-1974(14).jpg
+2 FORM jpg
+2 TITL Gloucestershire, England, Electoral Registers, 1832-1974
+2 _TEXT Gloucestershire Archives; Gloucester, England; Gloucestershire, Englan
+3 CONC d, Electoral Registers, 1832-1974
+0 @M821@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\England & Wales, Civil Registration Death Index, 1916-2007(19).jpg
+2 FORM jpg
+2 TITL England & Wales, Civil Registration Death Index, 1916-2007
+2 _TEXT England and Wales, Death Index: 1984-2005
+0 @M825@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\England & Wales, Civil Registration Marriage Index, 1916-2005(12).jpg
+2 FORM jpg
+2 TITL England & Wales, Civil Registration Marriage Index, 1916-2005
+0 @M826@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\British Postal Service Appointment Books, 1737-1969.jpg
+2 FORM jpg
+2 TITL British Postal Service Appointment Books, 1737-1969
+2 _TEXT British Postal Museum and Archive; Series: POST 58; Reference Number
+3 CONC : 135
+0 @M828@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\Gloucestershire, England, Electoral Registers, 1832-1974(17).jpg
+2 FORM jpg
+2 TITL Gloucestershire, England, Electoral Registers, 1832-1974
+2 _TEXT Gloucestershire Archives; Gloucester, England
+0 @M837@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\Gloucestershire, England, Electoral Registers, 1832-1974(18).jpg
+2 FORM jpg
+2 TITL Gloucestershire, England, Electoral Registers, 1832-1974
+2 _TEXT Gloucestershire Archives; Gloucester, England
+0 @M845@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\England & Wales, Birth Index, 1916-2005(8).jpg
+2 FORM jpg
+2 TITL England & Wales, Birth Index, 1916-2005
+2 _TEXT General Register Office; United Kingdom; Birth Register Indexes; Refer
+3 CONC ence: Volume 5c, Page 865
+0 @M851@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\1939 England and Wales Register(12).jpg
+2 FORM jpg
+2 TITL 1939 England and Wales Register
+2 _TEXT The National Archives; Kew, London, England; 1939 Register; Reference
+3 CONC : RG 101/5074C
+0 @M963@ OBJE
+1 FILE D:\OneDrive\Documents\Family Tree Maker\Nurse Media\England & Wales, Birth Index, 1916-2005(11).jpg
+2 FORM jpg
+2 TITL England & Wales, Birth Index, 1916-2005
+0 TRLR

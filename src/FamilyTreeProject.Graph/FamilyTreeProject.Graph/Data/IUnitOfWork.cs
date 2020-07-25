@@ -16,10 +16,9 @@ namespace FamilyTreeProject.Graph.Data
         /// <summary>
         /// Get an EdgeRepository
         /// </summary>
-        /// <typeparam name="V1">The type of the Source Vertex</typeparam>
-        /// <typeparam name="V2">The type of the Target Vertex</typeparam>
+        /// <typeparam name="E">The type of the Edge</typeparam>
         /// <returns>An Edge repository</returns>
-        IEdgeRepository<V1, V2> GetEdgeRepository<V1, V2>() where V1 : Vertex where V2 : Vertex;
+        IEdgeRepository<E> GetEdgeRepository<E>() where E : Element;
 
         /// <summary>
         /// Get a Vertex Repository
