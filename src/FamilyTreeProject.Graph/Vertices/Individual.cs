@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using FamilyTreeProject.Graph.Common;
 using FamilyTreeProject.Graph.Edges;
-using Newtonsoft.Json.Serialization;
 
 namespace FamilyTreeProject.Graph.Vertices
 {
