@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 ProjectSection(SolutionItems) = preProject
 	.gitignore = .gitignore
 	README.md = README.md
+	azure-pipelines.yml = azure-pipelines.yml
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTreeProject.Graph", "src\FamilyTreeProject.Graph\FamilyTreeProject.Graph.csproj", "{639BE9F1-F062-49AF-946A-2A09D8B712D3}"
