@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace FamilyTreeProject.Graph.Common
 {
@@ -35,6 +36,7 @@ namespace FamilyTreeProject.Graph.Common
         /// Gets Properties for an Element.  Note that there is no setter as the Properties collection can only be
         /// created on creation of an Element
         /// </summary>
+        [JsonIgnore]
         public IDictionary<string, string> Properties { get; }
     }
 }
