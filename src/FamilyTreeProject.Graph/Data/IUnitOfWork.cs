@@ -26,5 +26,13 @@ namespace FamilyTreeProject.Graph.Data
         /// <typeparam name="V">The type of the Vertex</typeparam>
         /// <returns></returns>
         IVertexRepository<V> GetVertexRepository<V>() where V : Vertex;
+        
+        /// <summary>
+        /// Get a Repository
+        /// </summary>
+        /// <typeparam name="V">The type of the Repository</typeparam>
+        /// <returns>An IRepository</returns>
+        V GetRepository<V>() where V : IRepository;
+
     }
 }

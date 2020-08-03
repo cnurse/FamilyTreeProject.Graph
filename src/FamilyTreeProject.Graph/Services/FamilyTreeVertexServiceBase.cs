@@ -18,9 +18,6 @@ namespace FamilyTreeProject.Graph.Services
         private readonly INoteService _noteService;
         private readonly IHasService<Note> _hasNoteService;
         private readonly IBelongsToTreeService _belongsToTreeService;
-        /*private readonly ITreeContainsService<Individual> _treeContainsIndividualService;
-        private readonly ITreeContainsService<Repository> _treeContainsRepositoryService;
-        private readonly ITreeContainsService<Source> _treeContainsSourceService;*/
         private readonly Tree _tree;
         
         /// <summary>
@@ -35,9 +32,6 @@ namespace FamilyTreeProject.Graph.Services
             _noteService = serviceFactory.CreateNoteService(tree);
             _hasNoteService = serviceFactory.CreateHasNoteService();
             _belongsToTreeService = serviceFactory.CreateBelongsToTreeService();
-            /*_treeContainsIndividualService = serviceFactory.CreateTreeContainsIndividualService();
-            _treeContainsRepositoryService = serviceFactory.CreateTreeContainsRepositoryService();
-            _treeContainsSourceService = serviceFactory.CreateTreeContainsSourceService();*/
             _tree = tree;
         }
 
@@ -82,19 +76,6 @@ namespace FamilyTreeProject.Graph.Services
         private void AddTreeEdges(V item)
         {
             _belongsToTreeService.Add(new BelongsToTree(item, _tree));
-            
-            /*if (item is Repository repository)
-            {
-                _treeContainsRepositoryService.Add(new TreeContains<Repository>(_tree, repository));
-            }
-            if (item is Source source)
-            {
-                _treeContainsSourceService.Add(new TreeContains<Source>(_tree, source));
-            }
-            if (item is Individual individual)
-            {
-                _treeContainsIndividualService.Add(new TreeContains<Individual>(_tree, individual));
-            }*/
         }
     }
 }

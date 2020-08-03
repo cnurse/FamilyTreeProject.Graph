@@ -12,7 +12,7 @@ namespace FamilyTreeProject.Graph.Services
     public class NoteService : INoteService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IVertexRepository<Note> _noteRepository;
+        private readonly INoteRepository _noteRepository;
         private readonly Tree _tree;
         
         /// <summary>
@@ -26,7 +26,7 @@ namespace FamilyTreeProject.Graph.Services
             Requires.NotNull(unitOfWork);
 
             _unitOfWork = unitOfWork;
-            _noteRepository = _unitOfWork.GetVertexRepository<Note>();
+            _noteRepository = _unitOfWork.GetRepository<INoteRepository>();
             _tree = tree;
         }
 

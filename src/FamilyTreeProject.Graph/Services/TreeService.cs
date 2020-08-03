@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using FamilyTreeProject.Graph.Contracts;
 using FamilyTreeProject.Graph.Data;
 using FamilyTreeProject.Graph.Services.Interfaces;
@@ -11,7 +12,7 @@ namespace FamilyTreeProject.Graph.Services
     /// </summary>
     public class TreeService : ITreeService
     {
-        private readonly IVertexRepository<Tree> _treeRepository;
+        private readonly ITreeRepository _treeRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         /// <summary>
@@ -23,7 +24,7 @@ namespace FamilyTreeProject.Graph.Services
             Requires.NotNull(unitOfWork);
 
             _unitOfWork = unitOfWork;
-            _treeRepository = _unitOfWork.GetVertexRepository<Tree>();
+            _treeRepository = _unitOfWork.GetRepository<ITreeRepository>();
         }
         
         /// <summary>
@@ -44,6 +45,16 @@ namespace FamilyTreeProject.Graph.Services
             
             _treeRepository.Add(tree);
             _unitOfWork.Commit();
+        }
+
+        /// <summary>
+        /// Gets all the Trees owned by a user
+        /// </summary>
+        /// <param name="owner">The owner's id</param>
+        /// <returns>An IEnumerable of Trees</returns>
+        public IEnumerable<Tree> GetTrees(string owner)
+        {
+            return _treeRepository.Get(owner);
         }
     }
 }
