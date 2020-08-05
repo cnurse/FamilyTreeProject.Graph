@@ -18,14 +18,14 @@ namespace FamilyTreeProject.Graph.Data
         /// </summary>
         /// <typeparam name="E">The type of the Edge</typeparam>
         /// <returns>An Edge repository</returns>
-        IEdgeRepository<E> GetEdgeRepository<E>() where E : Element;
+        IEdgeRepository<E> GetEdgeRepository<E>() where E : Element, new();
 
         /// <summary>
         /// Get a Vertex Repository
         /// </summary>
         /// <typeparam name="V">The type of the Vertex</typeparam>
         /// <returns></returns>
-        IVertexRepository<V> GetVertexRepository<V>() where V : Vertex;
+        IVertexRepository<V> GetVertexRepository<V>() where V : Vertex, new();
         
         /// <summary>
         /// Get a Repository
