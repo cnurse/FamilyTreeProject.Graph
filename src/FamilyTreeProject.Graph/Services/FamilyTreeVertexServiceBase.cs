@@ -36,6 +36,16 @@ namespace FamilyTreeProject.Graph.Services
         }
 
         /// <summary>
+        /// Gets a FamilyTreeVertexBase from the data store, based on its Id
+        /// </summary>
+        /// <param name="id">The Id of the FamilyTreeVertexBase to get</param>
+        /// <returns>The FamilyTreeVertex Base</returns>
+        public V GetById(string id)
+        {
+            return _repository.GetById(id);
+        }
+
+        /// <summary>
         /// Add Family Tree Vertices to the data store
         /// </summary>
         /// <param name="item">The FamilyTreeVertexBase to add</param>
