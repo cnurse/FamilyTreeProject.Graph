@@ -18,7 +18,7 @@ namespace FamilyTreeProject.Graph.Data
         /// </summary>
         /// <typeparam name="E">The type of the Edge</typeparam>
         /// <returns>An Edge repository</returns>
-        IEdgeRepository<E> GetEdgeRepository<E>() where E : Element, new();
+        IEdgeRepository<E> GetEdgeRepository<E>() where E : Element;
 
         /// <summary>
         /// Get a Vertex Repository

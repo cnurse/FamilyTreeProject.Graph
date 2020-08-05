@@ -9,7 +9,7 @@ namespace FamilyTreeProject.Graph.Services
     /// An abstract base class for CitationsVertexBase services (Individual, Fact)
     /// </summary>
     /// <typeparam name="V"></typeparam>
-    public abstract class CitationsVertexServiceBase<V> : FamilyTreeVertexServiceBase<V> where V: CitationsVertexBase
+    public abstract class CitationsVertexServiceBase<V> : FamilyTreeVertexServiceBase<V> where V: CitationsVertexBase, new()
     {
         private readonly ICitationService _citationService;
         private readonly IHasService<Citation> _hasCitationService;

@@ -12,7 +12,7 @@ namespace FamilyTreeProject.Graph.Services
     /// An abstract base class for FamilyTreeVertex services (Individual, Fact, Citation, Source, Repository)
     /// </summary>
     /// <typeparam name="V"></typeparam>
-    public abstract class FamilyTreeVertexServiceBase<V> where V: FamilyTreeVertexBase
+    public abstract class FamilyTreeVertexServiceBase<V> where V: FamilyTreeVertexBase, new()
     {
         private readonly IVertexRepository<V> _repository;
         private readonly INoteService _noteService;
