@@ -40,6 +40,11 @@ namespace FamilyTreeProject.Graph.Vertices
         }
         
         /// <summary>
+        /// Gets and sets the count of Individuals in the data store
+        /// </summary>
+        public long IndividualCount { get; set; }
+        
+        /// <summary>
         /// Gets and sets the Name of the Tree
         /// </summary>
         public string Name
@@ -57,6 +62,16 @@ namespace FamilyTreeProject.Graph.Vertices
             get => Properties["owner"];
             set => Properties["owner"] = value;
         }
+
+        /// <summary>
+        /// Gets and sets the count of Repositories in the data store
+        /// </summary>
+        public long RepositoryCount { get; set; }
+
+        /// <summary>
+        /// Gets and sets the count of Sources in the data store
+        /// </summary>
+        public long SourceCount { get; set; }
 
         /// <summary>
         /// Gets and sets the Title of the Tree
