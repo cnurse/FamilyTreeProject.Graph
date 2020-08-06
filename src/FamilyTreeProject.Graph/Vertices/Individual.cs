@@ -41,12 +41,15 @@ namespace FamilyTreeProject.Graph.Vertices
             get
             {
                 bool? value = null;
-                string alive = Properties["alive"];
-                if (!String.IsNullOrEmpty(alive))
+                if (Properties.ContainsKey("alive"))
                 {
-                    bool boolValue = false;
-                    Boolean.TryParse(alive, out boolValue);
-                    value = boolValue;
+                    string alive = Properties["alive"];
+                    if (!String.IsNullOrEmpty(alive))
+                    {
+                        bool boolValue = false;
+                        Boolean.TryParse(alive, out boolValue);
+                        value = boolValue;
+                    }
                 }
                 return value;
             }
