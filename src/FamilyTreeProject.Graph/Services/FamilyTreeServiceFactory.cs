@@ -18,8 +18,8 @@ namespace FamilyTreeProject.Graph.Services
         private IFoundInService _foundInService;
         private IHasService<Citation> _hasCitationService;
         private IHasService<Fact> _hasFactService;
+        private IHasHomeIndividualService _hasHomeIndividualService;
         private IHasService<Note> _hasNoteService;
-        //private IHasService<Source> _hasSourceService;
         private IIndividualService _individualService;
         private INoteService _noteService;
         private IParentService _parentService;
@@ -27,9 +27,6 @@ namespace FamilyTreeProject.Graph.Services
         private IRepositoryService _repositoryService;
         private ISourceService _sourceService;
         private ISpouseService _spouseService;
-        /*private ITreeContainsService<Individual> _treeContainsIndividualService;
-        private ITreeContainsService<Repository> _treeContainsRepositoryService;
-        private ITreeContainsService<Source> _treeContainsSourceService;*/
         private ITreeService _treeService;
         
         private readonly IUnitOfWork _unitOfWork;
@@ -112,6 +109,15 @@ namespace FamilyTreeProject.Graph.Services
         }
 
         /// <summary>
+        /// Create a HasHomeIndividual service
+        /// </summary>
+        /// <returns>A HasHomeIndividual Service</returns>
+        public IHasHomeIndividualService CreateHasHomeIndividualService()
+        {
+            return _hasHomeIndividualService ??= new HasHomeIndividualService(_unitOfWork);
+        }
+
+        /// <summary>
         /// Create a Has<Note> service
         /// </summary>
         /// <returns>An IHasService<Note></returns>
@@ -119,17 +125,6 @@ namespace FamilyTreeProject.Graph.Services
         {
             return _hasNoteService ??= new HasService<Note>(_unitOfWork);
         }
-
-        /*
-        /// <summary>
-        /// Create a Has<Source> service
-        /// </summary>
-        /// <returns>An IHasService<Note></returns>
-        public IHasService<Source> CreateHasSourceService()
-        {
-            return _hasSourceService ??= new HasService<Source>(_unitOfWork);
-        }
-        */
 
         /// <summary>
         /// Create an Individual service
@@ -198,38 +193,6 @@ namespace FamilyTreeProject.Graph.Services
             return _spouseService ??= new SpouseService(_unitOfWork);
         }
 
-        /*
-        /// <summary>
-        /// Create a TreeContainsIndividualService service
-        /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
-        /// <returns>A TreeContainsIndividualService Service</returns>
-        public ITreeContainsService<Individual> CreateTreeContainsIndividualService()
-        {
-            return _treeContainsIndividualService ??= new TreeContainsService<Individual>(_unitOfWork);
-        }
-
-        /// <summary>
-        /// Create a TreeContainsRepositoryService service
-        /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
-        /// <returns>A TreeContainsRepositoryService Service</returns>
-        public ITreeContainsService<Repository> CreateTreeContainsRepositoryService()
-        {
-            return _treeContainsRepositoryService ??= new TreeContainsService<Repository>(_unitOfWork);
-        }
-
-        /// <summary>
-        /// Create a TreeContainsSourceService service
-        /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
-        /// <returns>A TreeContainsSourceService Service</returns>
-        public ITreeContainsService<Source> CreateTreeContainsSourceService()
-        {
-            return _treeContainsSourceService ??= new TreeContainsService<Source>(_unitOfWork);
-        }
-        */
-        
         /// <summary>
         /// Creates a TreeService
         /// </summary>
@@ -237,7 +200,7 @@ namespace FamilyTreeProject.Graph.Services
         /// <returns>Am ITreeService</returns>
         public ITreeService CreateTreeService()
         {
-            return _treeService ??= new TreeService(_unitOfWork);
+            return _treeService ??= new TreeService(_unitOfWork, this);
         }
     }
 }

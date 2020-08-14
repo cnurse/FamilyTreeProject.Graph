@@ -20,5 +20,12 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
         /// <param name="owner">The owner's id</param>
         /// <returns>An IEnumerable of Trees</returns>
         IEnumerable<Tree> GetTrees(string owner);
+
+        /// <summary>
+        /// Set the Home Individual for a Tree
+        /// </summary>
+        /// <param name="tree">The tree</param>
+        /// <param name="individual">The individual to make Home Individual</param>
+        void SetHomeIndividual(Tree tree, Individual individual);
     }
 }

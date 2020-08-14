@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using FamilyTreeProject.Graph.Contracts;
 using FamilyTreeProject.Graph.Data;
+using FamilyTreeProject.Graph.Edges;
 using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
 
@@ -14,17 +15,19 @@ namespace FamilyTreeProject.Graph.Services
     {
         private readonly ITreeRepository _treeRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IHasHomeIndividualService _hasHomeIndividualService;
 
         /// <summary>
         /// Constructs a TreeService
         /// </summary>
         /// <param name="unitOfWork">The Unit of Work to use to interact with the repositories</param>
-        public TreeService(IUnitOfWork unitOfWork)
+        public TreeService(IUnitOfWork unitOfWork, IFamilyTreeServiceFactory serviceFactory)
         {
             Requires.NotNull(unitOfWork);
 
             _unitOfWork = unitOfWork;
             _treeRepository = _unitOfWork.GetRepository<ITreeRepository>();
+            _hasHomeIndividualService = serviceFactory.CreateHasHomeIndividualService();
         }
         
         /// <summary>
@@ -55,6 +58,16 @@ namespace FamilyTreeProject.Graph.Services
         public IEnumerable<Tree> GetTrees(string owner)
         {
             return _treeRepository.Get(owner);
+        }
+
+        /// <summary>
+        /// Set the Home Individual for a Tree
+        /// </summary>
+        /// <param name="tree">The tree</param>
+        /// <param name="individual">The individual to make Home Individual</param>
+        public void SetHomeIndividual(Tree tree, Individual individual)
+        {
+            _hasHomeIndividualService.Add(new HasHomeIndividual(tree, individual));
         }
     }
 }

@@ -52,16 +52,16 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
         IHasService<Fact> CreateHasFactService();
 
         /// <summary>
+        /// Create a HasHomeIndividual service
+        /// </summary>
+        /// <returns>A HasHomeIndividual Service</returns>
+        IHasHomeIndividualService CreateHasHomeIndividualService();
+
+        /// <summary>
         /// Create a HasNoteService service
         /// </summary>
         /// <returns>A HasNoteService Service</returns>
         IHasService<Note> CreateHasNoteService();
-
-        /*/// <summary>
-        /// Create a HasSourceService service
-        /// </summary>
-        /// <returns>A HasSourceService Service</returns>
-        IHasService<Source> CreateHasSourceService();*/
 
         /// <summary>
         /// Create an Individual service
@@ -109,29 +109,6 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
         /// <returns>A Spouse Service</returns>
         ISpouseService CreateSpouseService();
 
-        /*
-        /// <summary>
-        /// Create a TreeContainsIndividualService service
-        /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
-        /// <returns>A TreeContainsIndividualService Service</returns>
-        ITreeContainsService<Individual> CreateTreeContainsIndividualService();
-
-        /// <summary>
-        /// Create a TreeContainsRepositoryService service
-        /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
-        /// <returns>A TreeContainsRepositoryService Service</returns>
-        ITreeContainsService<Repository> CreateTreeContainsRepositoryService();
-
-        /// <summary>
-        /// Create a TreeContainsSourceService service
-        /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
-        /// <returns>A TreeContainsSourceService Service</returns>
-        ITreeContainsService<Source> CreateTreeContainsSourceService();
-        */
-        
         /// <summary>
         /// Create a Tree service
         /// </summary>

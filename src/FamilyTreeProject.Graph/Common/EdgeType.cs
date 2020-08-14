@@ -11,6 +11,7 @@ namespace FamilyTreeProject.Graph.Common
         Found_In = 3,
         Has = 4,
         Referenced_In = 5,
+        Has_Home_Individual = 6,
         Parent = 10,
         Child = 11,
         Spouse = 12
