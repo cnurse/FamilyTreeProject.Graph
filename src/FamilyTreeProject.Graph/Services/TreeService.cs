@@ -13,9 +13,9 @@ namespace FamilyTreeProject.Graph.Services
     /// </summary>
     public class TreeService : ITreeService
     {
-        private readonly ITreeRepository _treeRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IHasHomeIndividualService _hasHomeIndividualService;
+        private readonly ITreeRepository _treeRepository;
 
         /// <summary>
         /// Constructs a TreeService
@@ -26,8 +26,8 @@ namespace FamilyTreeProject.Graph.Services
             Requires.NotNull(unitOfWork);
 
             _unitOfWork = unitOfWork;
-            _treeRepository = _unitOfWork.GetRepository<ITreeRepository>();
             _hasHomeIndividualService = serviceFactory.CreateHasHomeIndividualService();
+            _treeRepository = _unitOfWork.GetRepository<ITreeRepository>();
         }
         
         /// <summary>

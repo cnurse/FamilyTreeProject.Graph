@@ -14,12 +14,5 @@ namespace FamilyTreeProject.Graph.Data
         /// </summary>
         /// <param name="vertex">The vertex to be added</param>
         void Add(V vertex);
-        
-        /// <summary>
-        /// Gets a Vertex from the data store, based on its Id
-        /// </summary>
-        /// <param name="id">The Id of the Vertex to get</param>
-        /// <returns>The Vertex</returns>
-        V GetById(string id);
     }
 }

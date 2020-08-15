@@ -14,6 +14,8 @@ namespace FamilyTreeProject.Graph.Services
 
         private readonly IFactService _factService;
         private readonly IHasService<Fact> _hasFactService;
+
+        private readonly IIndividualRepository _individualRepository;
         
         /// <summary>
         /// Constructs an IndividualService
@@ -24,9 +26,11 @@ namespace FamilyTreeProject.Graph.Services
         public IndividualService(IUnitOfWork unitOfWork, IFamilyTreeServiceFactory serviceFactory, Tree tree) : base(unitOfWork, serviceFactory, tree)
         {
             Requires.NotNull(unitOfWork);
+            
+            _unitOfWork = unitOfWork;
             _factService = serviceFactory.CreateFactService(tree);
             _hasFactService = serviceFactory.CreateHasFactService();
-            _unitOfWork = unitOfWork;
+            _individualRepository = _unitOfWork.GetRepository<IIndividualRepository>();
         }
 
         /// <summary>
@@ -49,6 +53,16 @@ namespace FamilyTreeProject.Graph.Services
             }
 
             _unitOfWork.Commit();
+        }
+
+        /// <summary>
+        /// Gets an individual by Id
+        /// </summary>
+        /// <param name="id">The individual's id</param>
+        /// <returns>An Individual</returns>
+        public Individual GetById(string id)
+        {
+            
         }
     }
 }

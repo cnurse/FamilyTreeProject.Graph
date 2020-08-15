@@ -1,11 +1,8 @@
 using FamilyTreeProject.Graph.Vertices;
 
-namespace FamilyTreeProject.Graph.Services.Interfaces
+namespace FamilyTreeProject.Graph.Data
 {
-    /// <summary>
-    /// IIndividualService defines the methods to manage a Individual object
-    /// </summary>
-    public interface IIndividualService : IFamilyTreeVertexService<Individual>
+    public interface IIndividualRepository: IRepository, IVertexRepository<Individual>
     {
         /// <summary>
         /// Gets an individual by Id
@@ -14,4 +11,3 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
         /// <returns>An Individual</returns>
         Individual GetById(string id);
     }
-}
