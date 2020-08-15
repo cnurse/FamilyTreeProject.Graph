@@ -62,7 +62,7 @@ namespace FamilyTreeProject.Graph.Services
         /// <returns>An Individual</returns>
         public Individual GetById(string id)
         {
-            
+            return _individualRepository.GetById(id);
         }
     }
 }

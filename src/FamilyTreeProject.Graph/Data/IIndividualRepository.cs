@@ -2,7 +2,7 @@ using FamilyTreeProject.Graph.Vertices;
 
 namespace FamilyTreeProject.Graph.Data
 {
-    public interface IIndividualRepository: IRepository, IVertexRepository<Individual>
+    public interface IIndividualRepository : IRepository, IVertexRepository<Individual>
     {
         /// <summary>
         /// Gets an individual by Id
@@ -11,3 +11,4 @@ namespace FamilyTreeProject.Graph.Data
         /// <returns>An Individual</returns>
         Individual GetById(string id);
     }
+}
