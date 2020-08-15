@@ -131,8 +131,9 @@ namespace FamilyTreeProject.Graph.Services
         /// </summary>
         /// <param name="tree">The family tree we are working with</param>
         /// <returns>An IIndividualService</returns>
-        public IIndividualService CreateIndividualService(Tree tree)
+        public IIndividualService CreateIndividualService(Tree tree = null)
         {
+            tree ??= new Tree();
             return _individualService ??= new IndividualService(_unitOfWork, this, tree);
         }
 
