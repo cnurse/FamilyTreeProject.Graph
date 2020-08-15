@@ -68,7 +68,7 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
         /// </summary>
         /// <param name="tree">The family tree we are working with</param>
         /// <returns>An Individual Service</returns>
-        IIndividualService CreateIndividualService(Tree tree);
+        IIndividualService CreateIndividualService(Tree tree = null);
 
         /// <summary>
         /// Create a Note service
