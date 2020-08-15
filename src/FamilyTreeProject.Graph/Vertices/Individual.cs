@@ -122,12 +122,14 @@ namespace FamilyTreeProject.Graph.Vertices
         {
             Children.Add(new Child(this, child));
             
-            var parentType = (Sex == Sex.Male)
-                                ? ParentType.Father
-                                : (Sex == Sex.Female)
-                                    ? ParentType.Mother
-                                    : ParentType.Unknown;
-            child.Parents.Add(new Parent(child, this, parentType));
+            child.Parents.Add(new Parent(child, this, GetParentType(Sex)));
+        }
+
+        public void AddParent(Individual parent)
+        {
+            Parents.Add(new Parent(this, parent, GetParentType(parent.Sex)));
+            
+            parent.Children.Add(new Child(parent, this));
         }
         
         /// <summary>
@@ -143,6 +145,16 @@ namespace FamilyTreeProject.Graph.Vertices
         {
             Spouses.Add(new Spouse(this, spouse));
             spouse.Spouses.Add(new Spouse(spouse, this));
+        }
+
+        private ParentType GetParentType(Sex sex)
+        {
+            var parentType = (sex == Sex.Male)
+                ? ParentType.Father
+                : (sex == Sex.Female)
+                    ? ParentType.Mother
+                    : ParentType.Unknown;
+            return parentType;
         }
 
         private void UpdateName()

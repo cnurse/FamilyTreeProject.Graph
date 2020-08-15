@@ -35,7 +35,7 @@ namespace FamilyTreeProject.Graph.Services
             _tree = tree;
         }
 
- /// <summary>
+        /// <summary>
         /// Add Family Tree Vertices to the data store
         /// </summary>
         /// <param name="item">The FamilyTreeVertexBase to add</param>
