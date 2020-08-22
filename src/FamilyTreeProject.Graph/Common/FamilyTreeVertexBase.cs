@@ -45,16 +45,9 @@ namespace FamilyTreeProject.Graph.Common
         /// Adds a new Note to the Notes collection
         /// </summary>
         /// <param name="noteText">Note text</param>
-        public void AddNote(string noteText)
+        public void AddNote(Note note)
         {
-            if (!String.IsNullOrEmpty(noteText))
-            {
-                var newNote = new Note
-                {
-                    Text = noteText,
-                };
-                Notes.Add(new Has<Note>(this, newNote));
-            }
+            Notes.Add(new Has<Note>(this, note));
         }
     }
 }

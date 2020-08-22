@@ -208,18 +208,22 @@ namespace FamilyTreeProject.Graph.Importers
         {
             foreach (var noteStructure in notes)
             {
+                var newNote = new Note();
+                
                 if (String.IsNullOrEmpty(noteStructure.XRefId))
                 {
-                    vertex.AddNote(noteStructure.Text);
+                    newNote.Text =noteStructure.Text;
                 }
                 else
                 {
                     if (_gedComDocument.NoteRecords[noteStructure.XRefId] is GEDCOMNoteRecord noteRecord && !String.IsNullOrEmpty(noteRecord.Data))
                     {
 
-                        vertex.AddNote(noteRecord.Data);
+                        newNote.Text = noteRecord.Data;
                     }
                 }
+                
+                vertex.AddNote(newNote);
             }
         }
         
