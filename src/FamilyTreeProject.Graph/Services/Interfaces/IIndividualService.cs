@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FamilyTreeProject.Graph.Vertices;
 
 namespace FamilyTreeProject.Graph.Services.Interfaces
@@ -8,10 +9,22 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
     public interface IIndividualService : IFamilyTreeVertexService<Individual>
     {
         /// <summary>
+        /// Gets a list of Individuals
+        /// </summary>
+        /// <param name="pageIndex">The page Index</param>
+        /// <param name="pageSize">The page size</param>
+        /// <param name="includeFacts">A flag that determines whether an individual's facts should be returned</param>
+        /// <param name="includeNotes">A flag that determines whether an individual's notes should be returned</param>
+        /// <returns>An IEnumerable of Individuals</returns>
+        IEnumerable<Individual> Get(int pageIndex, int pageSize, bool includeFacts, bool includeNotes);
+        
+        /// <summary>
         /// Gets an individual by Id
         /// </summary>
         /// <param name="id">The individual's id</param>
+        /// <param name="includeFacts">A flag that determines whether an individual's facts should be returned</param>
+        /// <param name="includeNotes">A flag that determines whether an individual's notes should be returned</param>
         /// <returns>An Individual</returns>
-        Individual GetById(string id);
+        Individual GetById(string id, bool includeFacts, bool includeNotes);
     }
 }

@@ -3,13 +3,13 @@ using FamilyTreeProject.Graph.Vertices;
 
 namespace FamilyTreeProject.Graph.Data
 {
-    public interface INoteRepository : IRepository, IVertexRepository<Note>
+    public interface IFactRepository : IRepository, IVertexRepository<Fact>
     {
         /// <summary>
-        /// Gets a list of Notes for an Individual
+        /// Gets a list of Facts for an Individual
         /// </summary>
         /// <param name="id">The individual's id</param>
-        /// <returns>An IEnumerable of Notes</returns>
-        IEnumerable<Note> Get(string id);    
+        /// <returns>An IEnumerable of Facts</returns>
+        IEnumerable<Fact> Get(string id);    
     }
 }

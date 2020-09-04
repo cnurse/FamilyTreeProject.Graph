@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FamilyTreeProject.Graph.Contracts;
 using FamilyTreeProject.Graph.Data;
 using FamilyTreeProject.Graph.Services.Interfaces;
@@ -16,6 +17,8 @@ namespace FamilyTreeProject.Graph.Services
         private readonly IHasService<Fact> _hasFactService;
 
         private readonly IIndividualRepository _individualRepository;
+        private readonly IFactRepository _factRepository;
+        private readonly INoteRepository _noteRepository;
         
         /// <summary>
         /// Constructs an IndividualService
@@ -31,6 +34,8 @@ namespace FamilyTreeProject.Graph.Services
             _factService = serviceFactory.CreateFactService(tree);
             _hasFactService = serviceFactory.CreateHasFactService();
             _individualRepository = _unitOfWork.GetRepository<IIndividualRepository>();
+            _factRepository = _unitOfWork.GetRepository<IFactRepository>();
+            _noteRepository = _unitOfWork.GetRepository<INoteRepository>();
         }
 
         /// <summary>
@@ -56,13 +61,68 @@ namespace FamilyTreeProject.Graph.Services
         }
 
         /// <summary>
+        /// Gets a list of Individuals
+        /// </summary>
+        /// <param name="pageIndex">The page Index</param>
+        /// <param name="pageSize">The page size</param>
+        /// <returns>An IEnumerable of Individuals</returns>
+        public IEnumerable<Individual> Get(int pageIndex, int pageSize, bool includeFacts, bool includeNotes)
+        {
+            var individuals = _individualRepository.Get(pageIndex, pageSize);
+
+            foreach (var individual in individuals)
+            {
+                if (includeFacts)
+                {
+                    GetFacts(individual);
+                }
+
+                if (includeNotes)
+                {
+                    GetNotes(individual);
+                }
+            }
+
+            return individuals;
+        }
+
+        /// <summary>
         /// Gets an individual by Id
         /// </summary>
         /// <param name="id">The individual's id</param>
         /// <returns>An Individual</returns>
-        public Individual GetById(string id)
+        public Individual GetById(string id, bool includeFacts, bool includeNotes)
         {
-            return _individualRepository.GetById(id);
+            var individual = _individualRepository.GetById(id);
+
+            if (includeFacts)
+            {
+                GetFacts(individual);
+            }
+
+            if (includeNotes)
+            {
+                GetNotes(individual);
+            }
+
+            return individual;
+        }
+
+        private void GetFacts(Individual individual)
+        {
+            foreach (var fact in _factRepository.Get(individual.Id))
+            {
+                individual.AddFact(fact);
+            }
+            
+        }
+
+        private void GetNotes(Individual individual)
+        {
+            foreach (var note in _noteRepository.Get(individual.Id))
+            {
+                individual.AddNote(note);
+            }
         }
     }
 }
