@@ -63,12 +63,15 @@ namespace FamilyTreeProject.Graph.Services
         /// <summary>
         /// Gets a list of Individuals
         /// </summary>
+        /// <param name="treeId">The Id of the tree which contains the indivduals</param>
         /// <param name="pageIndex">The page Index</param>
         /// <param name="pageSize">The page size</param>
+        /// <param name="includeFacts">A flag that determines whether an individual's facts should be returned</param>
+        /// <param name="includeNotes">A flag that determines whether an individual's notes should be returned</param>
         /// <returns>An IEnumerable of Individuals</returns>
-        public IEnumerable<Individual> Get(int pageIndex, int pageSize, bool includeFacts, bool includeNotes)
+        public IEnumerable<Individual> Get(string treeId, int pageIndex, int pageSize, bool includeFacts, bool includeNotes)
         {
-            var individuals = _individualRepository.Get(pageIndex, pageSize);
+            var individuals = _individualRepository.Get(treeId, pageIndex, pageSize);
 
             foreach (var individual in individuals)
             {

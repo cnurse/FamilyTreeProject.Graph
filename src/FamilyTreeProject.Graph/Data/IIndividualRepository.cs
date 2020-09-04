@@ -8,10 +8,11 @@ namespace FamilyTreeProject.Graph.Data
         /// <summary>
         /// Gets a list of Individuals
         /// </summary>
+        /// <param name="treeId">The Id of the tree which contains the indivduals</param>
         /// <param name="pageIndex">The page Index</param>
         /// <param name="pageSize">The page size</param>
         /// <returns>An IEnumerable of Individuals</returns>
-        IEnumerable<Individual> Get(int pageIndex, int pageSize);    
+        IEnumerable<Individual> Get(string treeId, int pageIndex, int pageSize);    
         
         /// <summary>
         /// Gets an individual by Id
