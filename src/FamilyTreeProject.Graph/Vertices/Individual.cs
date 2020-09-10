@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using FamilyTreeProject.Graph.Common;
 using FamilyTreeProject.Graph.Edges;
 
@@ -15,6 +16,13 @@ namespace FamilyTreeProject.Graph.Vertices
         /// </summary>
         public Individual() : this(String.Empty, String.Empty)
         {
+            Born = String.Empty;
+            Died = String.Empty;
+            FirstName = String.Empty;
+            LastName = String.Empty;
+            Suffix = String.Empty;
+            Title = String.Empty;
+            
         }
 
         /// <summary>

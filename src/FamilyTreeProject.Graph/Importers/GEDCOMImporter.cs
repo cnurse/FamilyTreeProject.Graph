@@ -190,7 +190,7 @@ namespace FamilyTreeProject.Graph.Importers
                 {
                     Date = eventStructure.Date,
                     Place = (eventStructure.Place != null) ? eventStructure.Place.Data : string.Empty,
-                    Description = eventStructure.Data
+                    Description = eventStructure.Data ?? String.Empty
                 };
 
                 switch (eventStructure.EventClass)
