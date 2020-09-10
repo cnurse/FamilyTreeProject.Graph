@@ -134,6 +134,10 @@ namespace FamilyTreeProject.Graph.Importers
 
                 LoadCitations(individual, individualRecord.SourceCitations);
 
+                //Load Attributes
+                LoadFacts(individual, individualRecord.Attributes);
+                
+                //Load Events
                 LoadFacts(individual, individualRecord.Events);
 
                 LoadMultimedia(individual, individualRecord.Multimedia);
