@@ -96,6 +96,20 @@ namespace FamilyTreeProject.Graph.Vertices
             set => Properties["sex"] = value.ToString();
         }
         
+        /// <summary>
+        ///   Gets or sets the Suffix of the individual
+        /// </summary>
+        public string Suffix
+        {
+            get => Properties["suffix"];
+            set
+            {
+                Properties["suffix"] = value;
+                UpdateName();
+            }
+        }
+
+        
         //Edge Properties
 
         /// <summary>
@@ -165,7 +179,10 @@ namespace FamilyTreeProject.Graph.Vertices
             string firstName = String.Empty;
             Properties.TryGetValue("firstName", out firstName);
             
-            Properties["name"] = $"{lastName}, {firstName}";
+            string suffix = String.Empty;
+            Properties.TryGetValue("suffix", out suffix);
+            
+            Properties["name"] = $"{lastName}, {firstName}{suffix}";
         }
     }
 }

@@ -128,6 +128,7 @@ namespace FamilyTreeProject.Graph.Importers
                     Id = Guid.NewGuid().ToString(),
                     FirstName = (individualRecord.Name != null) ? individualRecord.Name.GivenName : String.Empty,
                     LastName = (individualRecord.Name != null) ? individualRecord.Name.LastName : String.Empty,
+                    Suffix = (individualRecord.Name != null) ? individualRecord.Name.Suffix : String.Empty,
                     Sex = (Sex) Enum.Parse(typeof(Sex), individualRecord.Sex.ToString()),
                 };
 
