@@ -169,10 +169,28 @@ namespace FamilyTreeProject.Graph.Importers
         {
             foreach (var eventStructure in events)
             {
+                if (eventStructure.IndividualAttributeType == GEDCOM.Common.FactType.Title)
+                {
+                    //Assign to Individual Title Property and exit
+                    individual.Title = eventStructure.Data;
+                }
+
+                if (eventStructure.IndividualEventType == GEDCOM.Common.FactType.Birth)
+                {
+                    //Assign to Born property but do NOT exit
+                    individual.Born = eventStructure.Date;
+                }
+                if (eventStructure.IndividualEventType == GEDCOM.Common.FactType.Death)
+                {
+                    //Assign to Died property but do NOT exit
+                    individual.Died = eventStructure.Date;
+                }
+                
                 var newFact = new Fact()
                 {
                     Date = eventStructure.Date,
-                    Place = (eventStructure.Place != null) ? eventStructure.Place.Data : string.Empty
+                    Place = (eventStructure.Place != null) ? eventStructure.Place.Data : string.Empty,
+                    Description = eventStructure.Data
                 };
 
                 switch (eventStructure.EventClass)

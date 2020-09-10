@@ -55,7 +55,25 @@ namespace FamilyTreeProject.Graph.Vertices
             }
             set => Properties["alive"] = value.ToString();
         }
-        
+
+        /// <summary>
+        ///   Gets or sets when the individual was Born
+        /// </summary>
+        public string Born
+        {
+            get => Properties["born"];
+            set => Properties["born"] = value;
+        }
+
+        /// <summary>
+        ///   Gets or sets when the individual Died
+        /// </summary>
+        public string Died
+        {
+            get => Properties["died"];
+            set => Properties["died"] = value;
+        }
+
         /// <summary>
         ///   Gets or sets the first name of the individual
         /// </summary>
@@ -109,7 +127,16 @@ namespace FamilyTreeProject.Graph.Vertices
             }
         }
 
-        
+        /// <summary>
+        ///   Gets or sets the Title of the individual
+        /// </summary>
+        public string Title
+        {
+            get => Properties["title"];
+            set => Properties["title"] = value;
+        }
+
+
         //Edge Properties
 
         /// <summary>
