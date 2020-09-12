@@ -1,6 +1,3 @@
-using System.Reflection;
-using FamilyTreeProject.Graph.Vertices;
-
 namespace FamilyTreeProject.Graph.Common
 {
     public abstract class EdgeBase : Element

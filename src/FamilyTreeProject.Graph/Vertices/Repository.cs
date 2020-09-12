@@ -1,4 +1,5 @@
 using System;
+using FamilyTreeProject.Common;
 using FamilyTreeProject.Graph.Common;
 using FamilyTreeProject.Graph.Edges;
 
@@ -21,7 +22,7 @@ namespace FamilyTreeProject.Graph.Vertices
         /// </summary>
         /// <param name="id">The id of the Repository</param>
         /// <param name="treeId">The id of the Tree which owns the Repository</param>
-        public Repository(string id, string treeId) : base(id, VertexType.Repository, treeId)
+        public Repository(string id, string treeId) : base(id, EntityType.Repository, treeId)
         {
             Address = String.Empty;
             Name = String.Empty;

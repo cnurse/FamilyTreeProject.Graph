@@ -1,4 +1,5 @@
 using System;
+using FamilyTreeProject.Common;
 using FamilyTreeProject.Graph.Common;
 
 namespace FamilyTreeProject.Graph.Vertices
@@ -21,7 +22,7 @@ namespace FamilyTreeProject.Graph.Vertices
         /// </summary>
         /// <param name="id">The id of the Note</param>
         /// <param name="treeId">The id of the tree that owns the Note</param>
-        public Note(string id, string treeId) : base(id, VertexType.Note, treeId)
+        public Note(string id, string treeId) : base(id, EntityType.Note, treeId)
         {
         }
         

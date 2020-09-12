@@ -1,4 +1,5 @@
 using System;
+using FamilyTreeProject.Common;
 using FamilyTreeProject.Graph.Common;
 
 namespace FamilyTreeProject.Graph.Vertices
@@ -20,7 +21,7 @@ namespace FamilyTreeProject.Graph.Vertices
         /// </summary>
         /// <param name="id">The id of the Fact</param>
         /// <param name="treeId">The Id of the tree that owns the fact</param>
-        public Fact(string id, string treeId) : base(id, VertexType.Fact, treeId)
+        public Fact(string id, string treeId) : base(id, EntityType.Fact, treeId)
         {
             Date = String.Empty;
             Description = String.Empty;

@@ -1,3 +1,5 @@
+using FamilyTreeProject.Common;
+
 namespace FamilyTreeProject.Graph.Common
 {
     public interface IVertex
@@ -11,6 +13,6 @@ namespace FamilyTreeProject.Graph.Common
         /// <summary>
         /// Gets the VertexType of the Vertex
         /// </summary>
-        VertexType VertexType { get; }
+        EntityType VertexType { get; }
     }
 }

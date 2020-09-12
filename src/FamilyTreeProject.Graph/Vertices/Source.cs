@@ -1,4 +1,5 @@
 using System;
+using FamilyTreeProject.Common;
 using FamilyTreeProject.Graph.Common;
 using FamilyTreeProject.Graph.Edges;
 
@@ -30,7 +31,7 @@ namespace FamilyTreeProject.Graph.Vertices
         /// </summary>
         /// <param name="id">The Id of the Source</param>
         /// <param name="treeId">The Id of the Tree where this source is used</param>
-        public Source(string id, string treeId) : base(id, VertexType.Source, treeId)
+        public Source(string id, string treeId) : base(id, EntityType.Source, treeId)
         {
             Author = String.Empty;
             Publisher = String.Empty;

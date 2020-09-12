@@ -1,7 +1,8 @@
-using FamilyTreeProject.Graph.Contracts;
 using FamilyTreeProject.Graph.Data;
 using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
+using Naif.Core.Contracts;
+
 // ReSharper disable InvalidXmlDocComment
 
 namespace FamilyTreeProject.Graph.Services

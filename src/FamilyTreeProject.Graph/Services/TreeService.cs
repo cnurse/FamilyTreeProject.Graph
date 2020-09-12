@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using FamilyTreeProject.Graph.Contracts;
 using FamilyTreeProject.Graph.Data;
 using FamilyTreeProject.Graph.Edges;
 using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
+using Naif.Core.Contracts;
 
 namespace FamilyTreeProject.Graph.Services
 {

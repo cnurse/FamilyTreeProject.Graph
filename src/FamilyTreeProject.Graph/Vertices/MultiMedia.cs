@@ -1,4 +1,5 @@
 using System;
+using FamilyTreeProject.Common;
 using FamilyTreeProject.Graph.Common;
 
 namespace FamilyTreeProject.Graph.Vertices
@@ -20,7 +21,7 @@ namespace FamilyTreeProject.Graph.Vertices
         /// </summary>
         /// <param name="id">The id of the Multimedia object</param>
         /// <param name="treeId">The id of the tree that owns this Multimedia object</param>
-        public MultiMedia(string id, string treeId) : base(id, VertexType.Multimedia, treeId)
+        public MultiMedia(string id, string treeId) : base(id, EntityType.Multimedia, treeId)
         {
             File = String.Empty;
             Format = String.Empty;

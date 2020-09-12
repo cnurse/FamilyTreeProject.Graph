@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FamilyTreeProject.Common.Data;
 using FamilyTreeProject.Graph.Vertices;
 
 namespace FamilyTreeProject.Graph.Data

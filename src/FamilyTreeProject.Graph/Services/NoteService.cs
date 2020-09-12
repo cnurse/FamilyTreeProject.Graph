@@ -1,8 +1,8 @@
 using System;
-using FamilyTreeProject.Graph.Contracts;
 using FamilyTreeProject.Graph.Data;
 using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
+using Naif.Core.Contracts;
 
 namespace FamilyTreeProject.Graph.Services
 {

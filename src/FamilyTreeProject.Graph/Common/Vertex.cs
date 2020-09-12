@@ -1,3 +1,5 @@
+using FamilyTreeProject.Common;
+
 namespace FamilyTreeProject.Graph.Common
 {
     /// <summary>
@@ -12,7 +14,7 @@ namespace FamilyTreeProject.Graph.Common
         /// <param name="id">The Id of the Vertex</param>
         /// <param name="vertexType">The Type of Vertex being created </param>
         /// <param name="treeId">The Id of the parent Tree</param>
-        protected Vertex(string id, VertexType vertexType, string treeId): base(id, vertexType.ToString())
+        protected Vertex(string id, EntityType vertexType, string treeId): base(id, vertexType.ToString())
         {
             TreeId = treeId;
             VertexType = vertexType;
@@ -32,6 +34,6 @@ namespace FamilyTreeProject.Graph.Common
         /// <summary>
         /// Gets the VertexType of the Vertex
         /// </summary>
-        public VertexType VertexType { get; }
+        public EntityType VertexType { get; }
     }
 }

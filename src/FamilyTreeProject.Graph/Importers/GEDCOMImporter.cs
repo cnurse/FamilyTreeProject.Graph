@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using FamilyTreeProject.Common;
 using FamilyTreeProject.GEDCOM;
 using FamilyTreeProject.GEDCOM.Records;
 using FamilyTreeProject.GEDCOM.Structures;
 using FamilyTreeProject.Graph.Common;
-using FamilyTreeProject.Graph.Contracts;
 using FamilyTreeProject.Graph.Edges;
 using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
+using Naif.Core.Contracts;
 using EventClass = FamilyTreeProject.GEDCOM.Common.EventClass;
 
 namespace FamilyTreeProject.Graph.Importers
@@ -173,18 +174,18 @@ namespace FamilyTreeProject.Graph.Importers
         {
             foreach (var eventStructure in events)
             {
-                if (eventStructure.IndividualAttributeType == GEDCOM.Common.FactType.Title)
+                if (eventStructure.IndividualAttributeType == FactType.Title)
                 {
                     //Assign to Individual Title Property and exit
                     individual.Title = eventStructure.Data;
                 }
 
-                if (eventStructure.IndividualEventType == GEDCOM.Common.FactType.Birth)
+                if (eventStructure.IndividualEventType == FactType.Birth)
                 {
                     //Assign to Born property but do NOT exit
                     individual.Born = eventStructure.Date;
                 }
-                if (eventStructure.IndividualEventType == GEDCOM.Common.FactType.Death)
+                if (eventStructure.IndividualEventType == FactType.Death)
                 {
                     //Assign to Died property but do NOT exit
                     individual.Died = eventStructure.Date;
@@ -200,16 +201,16 @@ namespace FamilyTreeProject.Graph.Importers
                 switch (eventStructure.EventClass)
                 {
                     case EventClass.Individual:
-                        newFact.FactType = (Common.FactType) Enum.Parse(typeof(Common.FactType), eventStructure.IndividualEventType.ToString());
+                        newFact.FactType = (FactType) Enum.Parse(typeof(FactType), eventStructure.IndividualEventType.ToString());
                         break;
                     case EventClass.Family:
-                        newFact.FactType = (Common.FactType) Enum.Parse(typeof(Common.FactType), eventStructure.FamilyEventType.ToString());
+                        newFact.FactType = (FactType) Enum.Parse(typeof(FactType), eventStructure.FamilyEventType.ToString());
                         break;
                     case EventClass.Attribute:
-                        newFact.FactType = (Common.FactType) Enum.Parse(typeof(Common.FactType), eventStructure.IndividualAttributeType.ToString());
+                        newFact.FactType = (FactType) Enum.Parse(typeof(FactType), eventStructure.IndividualAttributeType.ToString());
                         break;
                     default:
-                        newFact.FactType = Common.FactType.Unknown;
+                        newFact.FactType = FactType.Unknown;
                         break;
                 }
 

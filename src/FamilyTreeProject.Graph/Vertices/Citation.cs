@@ -1,4 +1,5 @@
 using System;
+using FamilyTreeProject.Common;
 using FamilyTreeProject.Graph.Common;
 using FamilyTreeProject.Graph.Edges;
 
@@ -30,7 +31,7 @@ namespace FamilyTreeProject.Graph.Vertices
         /// </summary>
         /// <param name="id">The id of the Fact</param>
         /// <param name="treeId">The Id of the tree that owns the fact</param>
-        public Citation(string id, string treeId) : base(id, VertexType.Citation, treeId)
+        public Citation(string id, string treeId) : base(id, EntityType.Citation, treeId)
         {
             Date = String.Empty;
             Page = String.Empty;

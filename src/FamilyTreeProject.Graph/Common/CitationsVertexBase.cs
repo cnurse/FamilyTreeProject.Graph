@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FamilyTreeProject.Common;
 using FamilyTreeProject.Graph.Edges;
 using FamilyTreeProject.Graph.Vertices;
 
@@ -15,7 +16,7 @@ namespace FamilyTreeProject.Graph.Common
         /// <param name="id">The id of the CitationsVertexBase</param>
         /// <param name="vertexType">The vertexType of the CitationsVertexBase</param>
         /// <param name="treeId">The id of the Tree which contains this CitationsVertexBase</param>
-        protected CitationsVertexBase(string id, VertexType vertexType, string treeId) : base(id, vertexType, treeId)
+        protected CitationsVertexBase(string id, EntityType vertexType, string treeId) : base(id, vertexType, treeId)
         {            
             Citations = new List<Has<Citation>>();
         }

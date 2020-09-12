@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using FamilyTreeProject.Graph.Common;
 
 namespace FamilyTreeProject.Graph.Data

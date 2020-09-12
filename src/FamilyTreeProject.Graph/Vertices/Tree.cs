@@ -1,4 +1,5 @@
 using System;
+using FamilyTreeProject.Common;
 using FamilyTreeProject.Graph.Common;
 using FamilyTreeProject.Graph.Edges;
 
@@ -20,7 +21,7 @@ namespace FamilyTreeProject.Graph.Vertices
         /// Constructs a Tree
         /// </summary>
         /// <param name="id">The id of the Tree</param>
-        public Tree(string id) : base(id, VertexType.Tree, id)
+        public Tree(string id) : base(id, EntityType.Tree, id)
         {
             Name = String.Empty;
             Title = String.Empty;

@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using FamilyTreeProject.Common;
 using FamilyTreeProject.Graph.Edges;
 using FamilyTreeProject.Graph.Vertices;
 
@@ -16,7 +16,7 @@ namespace FamilyTreeProject.Graph.Common
         /// <param name="id">The id of the FamilyTreeVertexBase</param>
         /// <param name="vertexType">The vertexType of the FamilyTreeVertexBase</param>
         /// <param name="treeId">The id of the Tree which contains this FamilyTreeVertexBase</param>
-        protected FamilyTreeVertexBase(string id, VertexType vertexType, string treeId) : base(id, vertexType, treeId)
+        protected FamilyTreeVertexBase(string id, EntityType vertexType, string treeId) : base(id, vertexType, treeId)
         {
             MultiMedia = new List<Has<MultiMedia>>();
             Notes = new List<Has<Note>>();

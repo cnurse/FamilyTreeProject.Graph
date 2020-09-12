@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
+using FamilyTreeProject.Common;
 using FamilyTreeProject.Graph.Common;
 using FamilyTreeProject.Graph.Edges;
 
@@ -30,7 +30,7 @@ namespace FamilyTreeProject.Graph.Vertices
         /// </summary>
         /// <param name="id">The Id of the Individual</param>
         /// <param name="treeId">The TreeId of the Tree which contains this individual</param>
-        public Individual(string id, string treeId) : base(id, VertexType.Individual, treeId)
+        public Individual(string id, string treeId) : base(id, EntityType.Individual, treeId)
         {
             FirstName = String.Empty;
             LastName = String.Empty;
