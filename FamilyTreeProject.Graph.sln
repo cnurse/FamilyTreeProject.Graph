@@ -12,6 +12,10 @@ EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTreeProject.Graph", "src\FamilyTreeProject.Graph\FamilyTreeProject.Graph.csproj", "{639BE9F1-F062-49AF-946A-2A09D8B712D3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{200EE8DE-9427-4F0F-9FBD-22FD250EF874}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTreeProject.Graph.Tests", "tests\FamilyTreeProject.Graph.Tests\FamilyTreeProject.Graph.Tests.csproj", "{D7938A52-1693-4F88-AA08-F85503801826}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +26,16 @@ Global
 		{639BE9F1-F062-49AF-946A-2A09D8B712D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{639BE9F1-F062-49AF-946A-2A09D8B712D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{639BE9F1-F062-49AF-946A-2A09D8B712D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7938A52-1693-4F88-AA08-F85503801826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7938A52-1693-4F88-AA08-F85503801826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7938A52-1693-4F88-AA08-F85503801826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7938A52-1693-4F88-AA08-F85503801826}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{D7938A52-1693-4F88-AA08-F85503801826} = {200EE8DE-9427-4F0F-9FBD-22FD250EF874}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E3095F1F-4F71-4191-9061-48E2F24C7DB6}

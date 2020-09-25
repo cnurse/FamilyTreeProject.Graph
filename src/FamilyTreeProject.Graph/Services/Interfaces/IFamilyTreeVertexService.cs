@@ -1,4 +1,5 @@
 using FamilyTreeProject.Graph.Common;
+using FamilyTreeProject.Graph.Vertices;
 
 namespace FamilyTreeProject.Graph.Services.Interfaces
 {
@@ -12,7 +13,8 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
         /// Adds a FamilyTreeVertexBase to the data store
         /// </summary>
         /// <param name="item">The FamilyTreeVertexBase to add</param>
+        /// <param name="tree">The Tree which this item belongs to</param>
         /// <param name="addEdges">A flag that determines whether the edges are added</param>
-        void Add(V item, bool addEdges);
+        void Add(V item, Tree tree, bool addEdges);
     }
 }

@@ -1,6 +1,7 @@
 using FamilyTreeProject.Graph.Data;
 using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
+using Microsoft.Extensions.Caching.Memory;
 using Naif.Core.Contracts;
 
 // ReSharper disable InvalidXmlDocComment
@@ -31,15 +32,18 @@ namespace FamilyTreeProject.Graph.Services
         private ITreeService _treeService;
         
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMemoryCache _memoryCache;
         
         /// <summary>
         /// Constructs a FamilyTreeServiceFactory
         /// </summary>
         /// <param name="unitOfWork">The Unit of Work to use to interact with the repositories</param>
-        public FamilyTreeServiceFactory(IUnitOfWork unitOfWork)
+        public FamilyTreeServiceFactory(IMemoryCache memoryCache, IUnitOfWork unitOfWork)
         {
+            Requires.NotNull(memoryCache);
             Requires.NotNull(unitOfWork);
 
+            _memoryCache = memoryCache;
             _unitOfWork = unitOfWork;
         }
 
@@ -65,21 +69,19 @@ namespace FamilyTreeProject.Graph.Services
         /// <summary>
         /// Creates a Citation service
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>An ICitationService</returns>
-        public ICitationService CreateCitationService(Tree tree)
+        public ICitationService CreateCitationService()
         {
-            return _citationService ??= new CitationService(_unitOfWork, this, tree);
+            return _citationService ??= new CitationService(_unitOfWork, this);
         }
 
         /// <summary>
         /// Creates a Fact service
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>An IFactService</returns>
-        public IFactService CreateFactService(Tree tree)
+        public IFactService CreateFactService()
         {
-            return _factService ??= new FactService(_unitOfWork, this, tree);
+            return _factService ??= new FactService(_unitOfWork, this);
         }
         
         /// <summary>
@@ -130,22 +132,19 @@ namespace FamilyTreeProject.Graph.Services
         /// <summary>
         /// Create an Individual service
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>An IIndividualService</returns>
-        public IIndividualService CreateIndividualService(Tree tree = null)
+        public IIndividualService CreateIndividualService()
         {
-            tree ??= new Tree();
-            return _individualService ??= new IndividualService(_unitOfWork, this, tree);
+            return _individualService ??= new IndividualService(_memoryCache, _unitOfWork, this);
         }
 
         /// <summary>
         /// Create a Note service
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>A Note Service</returns>
-        public INoteService CreateNoteService(Tree tree)
+        public INoteService CreateNoteService()
         {
-            return _noteService ??= new NoteService(_unitOfWork, this, tree);
+            return _noteService ??= new NoteService(_unitOfWork, this);
         }
 
         /// <summary>
@@ -169,21 +168,19 @@ namespace FamilyTreeProject.Graph.Services
         /// <summary>
         /// Creates a RepositoryService
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>An IRepositoryService</returns>
-        public IRepositoryService CreateRepositoryService(Tree tree)
+        public IRepositoryService CreateRepositoryService()
         {
-            return _repositoryService ??= new RepositoryService(_unitOfWork, this, tree);
+            return _repositoryService ??= new RepositoryService(_unitOfWork, this);
         }
 
         /// <summary>
         /// Creates a SourceService
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>An ISourceService</returns>
-        public ISourceService CreateSourceService(Tree tree)
+        public ISourceService CreateSourceService()
         {
-            return _sourceService ??= new SourceService(_unitOfWork, this, tree);
+            return _sourceService ??= new SourceService(_unitOfWork, this);
         }
 
         /// <summary>

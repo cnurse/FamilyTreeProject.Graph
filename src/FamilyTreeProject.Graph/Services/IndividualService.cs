@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using FamilyTreeProject.Graph.Data;
 using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
+using Microsoft.Extensions.Caching.Memory;
 using Naif.Core.Contracts;
 
 namespace FamilyTreeProject.Graph.Services
@@ -10,49 +11,49 @@ namespace FamilyTreeProject.Graph.Services
     /// The IndividualService contains methods to manage individual objects
     /// </summary>
     public class IndividualService : CitationsVertexServiceBase<Individual>, IIndividualService
-    {        
+    {
+        private readonly IMemoryCache _memoryCache;
         private readonly IUnitOfWork _unitOfWork;
 
         private readonly IFactService _factService;
         private readonly IHasService<Fact> _hasFactService;
+        private readonly INoteService _noteService;
 
         private readonly IIndividualRepository _individualRepository;
-        private readonly IFactRepository _factRepository;
-        private readonly INoteRepository _noteRepository;
         
         /// <summary>
         /// Constructs an IndividualService
         /// </summary>
         /// <param name="unitOfWork">The Unit of Work to use to interact with the repositories</param>
         /// <param name="serviceFactory">The service factory to use to create services</param>
-        /// <param name="tree">The tree we are working with</param>
-        public IndividualService(IUnitOfWork unitOfWork, IFamilyTreeServiceFactory serviceFactory, Tree tree) : base(unitOfWork, serviceFactory, tree)
+        public IndividualService(IMemoryCache memoryCache, IUnitOfWork unitOfWork, IFamilyTreeServiceFactory serviceFactory) : base(unitOfWork, serviceFactory)
         {
-            Requires.NotNull(unitOfWork);
-            
+            Requires.NotNull(memoryCache);
+
+            _memoryCache = memoryCache;
             _unitOfWork = unitOfWork;
-            _factService = serviceFactory.CreateFactService(tree);
+            _factService = serviceFactory.CreateFactService();
             _hasFactService = serviceFactory.CreateHasFactService();
+            _noteService = serviceFactory.CreateNoteService();
             _individualRepository = _unitOfWork.GetRepository<IIndividualRepository>();
-            _factRepository = _unitOfWork.GetRepository<IFactRepository>();
-            _noteRepository = _unitOfWork.GetRepository<INoteRepository>();
         }
 
         /// <summary>
         /// Adds an Individual to the data store
         /// </summary>
         /// <param name="individual">The individual to add</param>
+        /// <param name="tree">The tree we are working with</param>
         /// <param name="addEdges">A flag that determines whether the edges are added</param>
-        public void Add(Individual individual, bool addEdges)
+        public void Add(Individual individual, Tree tree, bool addEdges)
         {
-            AddInternal(individual, addEdges);
+            AddInternal(individual, tree, addEdges);
             if (addEdges)
             {
                 foreach (var hasFact in individual.Facts)
                 {
                     var fact = (Fact)hasFact.TargetVertex;
 
-                    _factService.Add(fact, addEdges);
+                    _factService.Add(fact, tree, addEdges);
                     _hasFactService.Add(hasFact);
                 }
             }
@@ -113,7 +114,7 @@ namespace FamilyTreeProject.Graph.Services
 
         private void GetFacts(Individual individual)
         {
-            foreach (var fact in _factRepository.Get(individual.Id))
+            foreach (var fact in _factService.Get(individual.Id))
             {
                 individual.AddFact(fact);
             }
@@ -122,7 +123,7 @@ namespace FamilyTreeProject.Graph.Services
 
         private void GetNotes(Individual individual)
         {
-            foreach (var note in _noteRepository.Get(individual.Id))
+            foreach (var note in _noteService.Get(individual.Id))
             {
                 individual.AddNote(note);
             }

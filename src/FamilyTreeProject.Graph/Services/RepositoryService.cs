@@ -17,8 +17,7 @@ namespace FamilyTreeProject.Graph.Services
         /// </summary>
         /// <param name="unitOfWork">The Unit of Work to use to interact with the repositories</param>
         /// <param name="serviceFactory">The service factory to use to create services</param>
-        /// <param name="tree">The tree we are working with</param>
-        public RepositoryService(IUnitOfWork unitOfWork, IFamilyTreeServiceFactory serviceFactory, Tree tree) : base(unitOfWork, serviceFactory, tree)
+        public RepositoryService(IUnitOfWork unitOfWork, IFamilyTreeServiceFactory serviceFactory) : base(unitOfWork, serviceFactory)
         {
             Requires.NotNull(unitOfWork);
 
@@ -29,10 +28,11 @@ namespace FamilyTreeProject.Graph.Services
         /// Adds a Repository to the data store
         /// </summary>
         /// <param name="repository">The Repository to add</param>
+        /// <param name="tree">The tree we are working with</param>
         /// <param name="addEdges">A flag that determines whether the edges are added</param>
-        public void Add(Repository repository, bool addEdges)
+        public void Add(Repository repository, Tree tree, bool addEdges)
         {
-            AddInternal(repository, addEdges);
+            AddInternal(repository, tree, addEdges);
 
             _unitOfWork.Commit();
         }

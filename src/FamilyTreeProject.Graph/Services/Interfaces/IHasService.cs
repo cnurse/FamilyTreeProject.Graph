@@ -11,7 +11,7 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
         /// <summary>
         /// Adds a Has edge to the data store
         /// </summary>
-        /// <param name="belongsToTree">The Has edge to add</param>
+        /// <param name="has">The Has edge to add</param>
         void Add(Has<V> has);
     }
 }

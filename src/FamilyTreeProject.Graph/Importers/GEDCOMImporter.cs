@@ -330,34 +330,34 @@ namespace FamilyTreeProject.Graph.Importers
 
         private void ProcessIndividuals(IDictionary<string, Individual> individuals, Tree tree)
         {
-            var individualService = _serviceFactory.CreateIndividualService(tree);
+            var individualService = _serviceFactory.CreateIndividualService();
 
             foreach (var individual in individuals.Values)
             {
                 individual.TreeId = tree.TreeId;
-                individualService.Add(individual, true);
+                individualService.Add(individual, tree, true);
             }
         }
 
         private void ProcessRepositories(IDictionary<string, Repository> repositories, Tree tree)
         {
-            var repositoryService = _serviceFactory.CreateRepositoryService(tree);
+            var repositoryService = _serviceFactory.CreateRepositoryService();
 
             foreach (var repository in repositories.Values)
             {
                 repository.TreeId = tree.TreeId;
-                repositoryService.Add(repository, true);
+                repositoryService.Add(repository, tree, true);
             }
         }
 
         private void ProcessSources(IDictionary<string, Source> sources, Tree tree)
         {
-            var sourceService = _serviceFactory.CreateSourceService(tree);
+            var sourceService = _serviceFactory.CreateSourceService();
 
             foreach (var source in sources.Values)
             {
                 source.TreeId = tree.TreeId;
-                sourceService.Add(source, true);
+                sourceService.Add(source, tree, true);
             }
         }
     }

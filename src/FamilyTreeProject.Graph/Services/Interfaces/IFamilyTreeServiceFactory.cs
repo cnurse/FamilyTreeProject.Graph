@@ -22,16 +22,14 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
         /// <summary>
         /// Create a Citation service
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>A Citation Service</returns>
-        ICitationService CreateCitationService(Tree tree);
+        ICitationService CreateCitationService();
 
         /// <summary>
         /// Create a Fact service
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>A Fact Service</returns>
-        IFactService CreateFactService(Tree tree);
+        IFactService CreateFactService();
 
         /// <summary>
         /// Create a FoundIn service
@@ -66,16 +64,14 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
         /// <summary>
         /// Create an Individual service
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>An Individual Service</returns>
-        IIndividualService CreateIndividualService(Tree tree = null);
+        IIndividualService CreateIndividualService();
 
         /// <summary>
         /// Create a Note service
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>A Note Service</returns>
-        INoteService CreateNoteService(Tree tree);
+        INoteService CreateNoteService();
 
         /// <summary>
         /// Create a Parent service
@@ -92,16 +88,14 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
         /// <summary>
         /// Create a Repository service
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>A Repository Service</returns>
-        IRepositoryService CreateRepositoryService(Tree tree);
+        IRepositoryService CreateRepositoryService();
         
         /// <summary>
         /// Create a Source service
         /// </summary>
-        /// <param name="tree">The family tree we are working with</param>
         /// <returns>A Source Service</returns>
-        ISourceService CreateSourceService(Tree tree);
+        ISourceService CreateSourceService();
         
         /// <summary>
         /// Create a Spouse service
