@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using FamilyTreeProject.Graph.Vertices;
+using Naif.Core.Collections;
 
 namespace FamilyTreeProject.Graph.Services.Interfaces
 {
@@ -17,7 +18,7 @@ namespace FamilyTreeProject.Graph.Services.Interfaces
         /// <param name="includeFacts">A flag that determines whether an individual's facts should be returned</param>
         /// <param name="includeNotes">A flag that determines whether an individual's notes should be returned</param>
         /// <returns>An IEnumerable of Individuals</returns>
-        IEnumerable<Individual> Get(string treeId, int pageIndex, int pageSize, bool includeFacts, bool includeNotes);
+        IPagedList<Individual> Get(string treeId, int pageIndex, int pageSize, bool includeFacts, bool includeNotes);
         
         /// <summary>
         /// Gets an individual by Id

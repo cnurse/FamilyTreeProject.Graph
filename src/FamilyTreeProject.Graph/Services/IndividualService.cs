@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
+using FamilyTreeProject.Graph.Common;
 using FamilyTreeProject.Graph.Data;
 using FamilyTreeProject.Graph.Services.Interfaces;
 using FamilyTreeProject.Graph.Vertices;
 using Microsoft.Extensions.Caching.Memory;
+using Naif.Core.Collections;
 using Naif.Core.Contracts;
 
 namespace FamilyTreeProject.Graph.Services
@@ -12,7 +15,7 @@ namespace FamilyTreeProject.Graph.Services
     /// </summary>
     public class IndividualService : CitationsVertexServiceBase<Individual>, IIndividualService
     {
-        private readonly IMemoryCache _memoryCache;
+        private readonly IMemoryCache _cache;
         private readonly IUnitOfWork _unitOfWork;
 
         private readonly IFactService _factService;
@@ -30,7 +33,7 @@ namespace FamilyTreeProject.Graph.Services
         {
             Requires.NotNull(memoryCache);
 
-            _memoryCache = memoryCache;
+            _cache = memoryCache;
             _unitOfWork = unitOfWork;
             _factService = serviceFactory.CreateFactService();
             _hasFactService = serviceFactory.CreateHasFactService();
@@ -70,24 +73,32 @@ namespace FamilyTreeProject.Graph.Services
         /// <param name="includeFacts">A flag that determines whether an individual's facts should be returned</param>
         /// <param name="includeNotes">A flag that determines whether an individual's notes should be returned</param>
         /// <returns>An IEnumerable of Individuals</returns>
-        public IEnumerable<Individual> Get(string treeId, int pageIndex, int pageSize, bool includeFacts, bool includeNotes)
+        public IPagedList<Individual> Get(string treeId, int pageIndex, int pageSize, bool includeFacts, bool includeNotes)
         {
-            var individuals = _individualRepository.Get(treeId, pageIndex, pageSize);
-
-            foreach (var individual in individuals)
+            var individualCache = _cache.GetOrCreate<IEnumerable<Individual>>(CacheKeys.Individuals, entry =>
             {
-                if (includeFacts)
+                var individuals = _individualRepository.Get(treeId, 0, -1);
+
+                foreach (var individual in individuals)
                 {
-                    GetFacts(individual);
+                    if (includeFacts)
+                    {
+                        GetFacts(individual);
+                    }
+
+                    if (includeNotes)
+                    {
+                        GetNotes(individual);
+                    }
                 }
 
-                if (includeNotes)
-                {
-                    GetNotes(individual);
-                }
-            }
+                entry.SetSlidingExpiration(TimeSpan.FromSeconds(20));
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(120);
 
-            return individuals;
+                return individuals;
+            });
+
+            return individualCache.ToPagedList(pageIndex, pageSize);
         }
 
         /// <summary>
